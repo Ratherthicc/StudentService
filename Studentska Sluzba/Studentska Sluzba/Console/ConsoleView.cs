@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentskaSluzba.Console
+{
+    abstract class ConsoleView
+    {
+        protected int SafeInputInt()
+        {
+            int input;
+
+            string rawInput = System.Console.ReadLine();
+
+            while (!int.TryParse(rawInput, out input))
+            {
+                System.Console.WriteLine("Not a valid number, try again: ");
+
+                rawInput = System.Console.ReadLine();
+            }
+            return input;
+        }
+
+        protected float SafeInputFloat()
+        {
+            float input;
+
+            string rawInput = System.Console.ReadLine();
+
+            while (!float.TryParse(rawInput, out input))
+            {
+                System.Console.WriteLine("Not a valid number, try again: ");
+
+                rawInput = System.Console.ReadLine();
+            }
+            return input;
+        }
+    }
+}

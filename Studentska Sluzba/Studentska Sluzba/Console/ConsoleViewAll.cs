@@ -1,0 +1,387 @@
+﻿using StudentskaSluzba.Manager;
+using StudentskaSluzba.model;
+using System;
+using System.Collections.Generic;
+using System.Reflection.PortableExecutable;
+using System.Text;
+
+namespace StudentskaSluzba.Console
+{
+    internal class ConsoleViewAll : ConsoleView
+
+
+    {
+        private PredmetManager pred;
+        private AdresaManager manager;
+        private ProfesorManager managerr;
+        private KatedraManager katedra;
+        private StudentManager s;
+        public ConsoleViewAll(AdresaManager manager, ProfesorManager managerr, PredmetManager pred, KatedraManager katedra, StudentManager s)
+        {
+            this.manager = manager;
+            this.managerr = managerr;
+            this.pred = pred;
+            this.katedra = katedra;
+            this.s = s;
+        }
+        private void PrintAdrese(List<Adresa> adrese)
+        {
+            System.Console.WriteLine("Adrese: ");
+
+            foreach (Adresa v in adrese)
+            {
+                System.Console.WriteLine(v);
+            }
+        }
+
+        private void PrintProfesori(List<Profesor> profesors)
+        {
+            System.Console.WriteLine("Profesor: ");
+
+            foreach (Profesor p in profesors)
+            {
+                System.Console.WriteLine(p);
+            }
+        }
+
+        private void PrintPredmeti(List<Predmet> predmeti)
+        {
+            System.Console.WriteLine("Predmeti: ");
+
+            foreach (Predmet p in predmeti)
+            {
+                System.Console.WriteLine(p);
+            }
+        }
+
+        private void PrintKatedre(List<Katedra> katedre)
+        {
+            System.Console.WriteLine("Katedra: ");
+
+            foreach (Katedra katt in katedre)
+            {
+                System.Console.WriteLine(katt);
+            }
+        }
+
+        private void PrintStudenti(List<Student> s)
+        {
+            System.Console.WriteLine("Student: ");
+
+            foreach (Student x in s)
+            {
+                System.Console.WriteLine(x);
+            }
+        }
+        private Adresa InputAdresa()
+        {
+            Adresa a1 = new Adresa();
+
+            System.Console.WriteLine("Unesite id adrese: ");
+            int c = SafeInputInt();
+            a1.id = c;
+
+
+            System.Console.WriteLine("Enter adresa name: ");
+            string name = System.Console.ReadLine();
+            a1.Street = name;
+
+            System.Console.WriteLine("Enter number of street: ");
+            string broj = System.Console.ReadLine();
+            a1.StreetNumber = broj;
+
+            System.Console.WriteLine("Enter town: ");
+            string town = System.Console.ReadLine();
+            a1.Town = town;
+
+
+            System.Console.WriteLine("Enter country: ");
+            string country = System.Console.ReadLine();
+            a1.Country = country;
+
+            return a1;
+        }
+
+        private Profesor InputProfesor()
+        {
+            Profesor p = new Profesor();
+
+            System.Console.WriteLine("ID preofesora: ");
+            int profesorId = SafeInputInt();
+            p.profesorId = profesorId;
+
+
+
+
+            System.Console.WriteLine("Unesite prezime profesora: ");
+            string surname = System.Console.ReadLine();
+            p.Surname = surname;
+
+            System.Console.WriteLine("Unesite ime profesora: ");
+            string name = System.Console.ReadLine();
+            p.Name = name;
+
+            System.Console.WriteLine("Unesite datum rodjenja: ");
+            string datum = System.Console.ReadLine();
+            p.DateOfBirth = DateTime.ParseExact(datum, "dd/MM/yyyy", null);
+
+
+            p.ResidentialAddress = manager.adrese[1];
+            p.AdresaStanovanjaId = manager.adrese[1].id;
+           
+
+            System.Console.WriteLine("Unesite broj telefona: ");
+            string broj = System.Console.ReadLine();
+            p.ContactPhone = broj;
+
+            System.Console.WriteLine("Unesite mejl: ");
+            string mejl = System.Console.ReadLine();
+            p.Email = mejl;
+
+            p.OfficeAddress = manager.adrese[0];
+            p.AdresaKancelarijeId = manager.adrese[0].id;
+
+
+            System.Console.WriteLine("Unesite jmbg: ");
+            string xxx = System.Console.ReadLine();
+            p.IdNumber = xxx;
+
+
+            System.Console.WriteLine("Unesite zvanje: ");
+            string x = System.Console.ReadLine();
+            p.Title = x;
+
+
+
+
+
+            System.Console.WriteLine("Unesite godine radnog staza: ");
+            int wheels = SafeInputInt();
+            p.YearsOfTrail = wheels;
+            return p;
+        }
+
+        private Predmet InputPredmet()
+        {
+            Predmet predmet = new Predmet();
+
+            System.Console.WriteLine("Unesite ID predmeta: ");
+            int predmetId = SafeInputInt();
+            predmet.PredmetId = predmetId;
+
+            System.Console.WriteLine("Unesite sifru predmeta: ");
+            string id = System.Console.ReadLine();
+            predmet.Id = id;
+
+            System.Console.WriteLine("Unesite naziv predmeta: ");
+            string nazivPredmeta = System.Console.ReadLine();
+            predmet.Name = nazivPredmeta;
+
+            predmet.Semester = 0;
+
+            System.Console.WriteLine("Unesite godinu na kojoj se predmet izvodi: ");
+            int x = SafeInputInt();
+            predmet.YearOfStudy = x;
+
+            predmet.Profesor = managerr.profesori[0];
+            predmet.ProfesorId = managerr.profesori[0].profesorId;
+
+            System.Console.WriteLine("Unesite ESP bodove: ");
+            int ESPB = SafeInputInt();
+            predmet.Espb = ESPB;
+
+
+            return predmet;
+
+
+        }
+
+        private Katedra InputKatedra()
+        {
+            Katedra k = new Katedra();
+            System.Console.WriteLine("Unesite ID katedre: ");
+            int katedraId = SafeInputInt();
+            k.IdKatedre = katedraId;
+
+            System.Console.WriteLine("Unesite sifru katedre: ");
+            string sifra = (System.Console.ReadLine());
+            k.DepartmentCode = sifra;
+
+            System.Console.WriteLine("Unesite naziv katedre: ");
+            String naziv = System.Console.ReadLine();
+            k.DepartmentName = naziv;
+
+            k.Chairman = managerr.profesori[0];
+            k.Idchairman = managerr.profesori[0].profesorId;
+
+
+
+            return k;
+        }
+
+        private Student inputStudent()
+        {
+            Student student = new Student();
+
+            System.Console.WriteLine("ID studenta: ");
+            int studentId = SafeInputInt();
+            student.studentId = studentId;
+
+            System.Console.WriteLine("Ime: ");
+            string name = System.Console.ReadLine();
+            student.name = name;
+
+            System.Console.WriteLine("Prezime: ");
+            string prezime = System.Console.ReadLine();
+            student.surname = prezime;
+
+            System.Console.WriteLine("Datum Rodjenja: ");
+            DateTime datumRodjenja = Convert.ToDateTime(System.Console.ReadLine());
+            student.dateOfBirth = datumRodjenja;
+
+
+            student.address = manager.adrese[1];
+            student.adresaId = manager.adrese[1].id;
+
+            System.Console.WriteLine("Kontakt telefon: ");
+            string brTelefona = System.Console.ReadLine();
+            student.phoneNumber = brTelefona;
+
+            System.Console.WriteLine("Email adresa: ");
+            string email = System.Console.ReadLine();
+            student.email = email;
+
+            System.Console.WriteLine("Broj indeksa: ");
+            string brIndeksa = System.Console.ReadLine();
+            student.idNumber = brIndeksa;
+          //  brIndeksa.ToLower();
+
+            System.Console.WriteLine("Godina upisa: ");
+            int godinaUpisa = Convert.ToInt32(System.Console.ReadLine());
+            student.yearOfEnrollment = godinaUpisa;
+
+            System.Console.WriteLine("Trenutna godina studija: ");
+            int trenutnaGod = Convert.ToInt32(System.Console.ReadLine());
+            student.yearOfStudy = trenutnaGod;
+
+            System.Console.WriteLine("Nacin finansiranja (0 za Budzet ili 1 za Samofinansiranje): ");
+            int status = SafeInputInt();
+            student.methodOfFinancing = (Student.Status)status;
+
+            System.Console.WriteLine("Prosjecna ocjena: ");
+            float p = SafeInputFloat();
+            student.avgGrade = p;
+
+
+            return student;
+        }
+
+
+
+        private void AddAdresa()
+        {
+            Adresa a1 = InputAdresa();
+            manager.AddAdresa(a1);
+            System.Console.WriteLine("Adresa added");
+        }
+
+        private void AddProfesor()
+        {
+            Profesor a1 = InputProfesor();
+            managerr.AddProfesor(a1);
+            System.Console.WriteLine("Profesor added");
+        }
+
+        private void AddPredmet()
+        {
+            Predmet a1 = InputPredmet();
+            pred.AddPredmet(a1);
+            System.Console.WriteLine("Predmet added");
+        }
+
+        private void AddKatedra()
+        {
+            Katedra a1 = InputKatedra();
+            katedra.AddKatedra(a1);
+            System.Console.WriteLine("Katedra added");
+
+        }
+
+        private void AddStudent()
+        {
+            Student m = inputStudent();
+            s.AddStudent(m);
+            System.Console.WriteLine("Student added");
+
+        }
+
+        private void ShowMenu()
+        {
+            System.Console.WriteLine("\nChoose an option: ");
+            System.Console.WriteLine("1: Prikazi sve adrese");
+            System.Console.WriteLine("2: Dodaj adresu");
+            System.Console.WriteLine("3: Prikazi profesore");
+            System.Console.WriteLine("4: Dodaj profesora");
+            System.Console.WriteLine("5: Dodaj predmet");
+            System.Console.WriteLine("6: Prikazi predmete");
+            System.Console.WriteLine("7: Prikazi katedre");
+            System.Console.WriteLine("8: Dodaj katedre");
+            System.Console.WriteLine("9: Prikazi studente");
+            System.Console.WriteLine("10: Dodaj studenta");
+
+
+
+
+
+            System.Console.WriteLine("0: Close");
+        }
+        public void RunMenu()
+        {
+            while (true)
+            {
+                ShowMenu();
+                string userInput = System.Console.ReadLine();
+                if (userInput == "0") break;
+                HandleMenuInput(userInput);
+            }
+        }
+
+        private void HandleMenuInput(string input)
+        {
+            switch (input)
+            {
+                case "1":
+                    PrintAdrese(manager.GetAllAdresses());
+                    break;
+                case "2":
+                    AddAdresa();
+                    break;
+                case "3":
+                    PrintProfesori(managerr.GetAllProfesors());
+                    break;
+                case "4":
+                    AddProfesor();
+                    break;
+                case "5":
+                    AddPredmet();
+                    break;
+                case "6":
+                    PrintPredmeti(pred.GetAllSubjects());
+                    break;
+                case "7":
+                    PrintKatedre(katedra.GetAllKatedras());
+                    break;
+                case "8":
+                    AddKatedra();
+                    break;
+                case "9":
+                    PrintStudenti(s.GetStudents());
+                    break;
+                case "10":
+                    AddStudent();
+                    break;
+            }
+        }
+    }
+}
+
