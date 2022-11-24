@@ -23,7 +23,6 @@ namespace StudentskaSluzba.Model
             this.PredmetId = PredmetId;
         }
 
-        //Kod implementiran preko koda sa primera sa vezbi 3
         public void FromCSV(string[] values)
         {
             StudentId = int.Parse(values[0]);

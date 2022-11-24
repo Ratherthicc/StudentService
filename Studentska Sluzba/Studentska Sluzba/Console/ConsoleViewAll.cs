@@ -491,6 +491,14 @@ namespace StudentskaSluzba.Console
             }
         }
 
+        private int InputId()
+        {
+            System.Console.WriteLine("unesi id: ");
+            int n = SafeInputInt();
+            return n;
+        }
+
+  
 
 
 

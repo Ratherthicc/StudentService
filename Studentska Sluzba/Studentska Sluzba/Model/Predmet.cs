@@ -151,19 +151,8 @@ namespace StudentskaSluzba.model
                                            "\nESPB bodovi: {5}",
                                            PredmetId, Id, Name, YearOfStudy, ProfesorId, Espb);
 
-            string string1 = "\nStudenti polozili: ";
-            foreach (Student s in studentsPassed)
-            {
-                string1 += s.ToString();
-            }
 
-            string string2 = "\nStudenti nisu polozili: ";
-            foreach (Student s in studentsRemaining)
-            {
-                string2 += s.ToString();
-            }
-
-            return string0 + string1 + string2;
+            return string0;
         }
 
 

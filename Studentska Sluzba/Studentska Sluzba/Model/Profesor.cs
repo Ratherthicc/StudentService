@@ -194,13 +194,8 @@ namespace StudentskaSluzba.model
                                            surname, name, dateOfBirth,AdresaStanovanjaId, contactPhone, email,
                                            AdresaKancelarijeId, idNumber, title, yearsOfTrail);
 
-            string string1 = "\nPredmeti: ";
-            foreach (Predmet p in teachSubjects)
-            {
-                string1 += p.ToString();
-            }
 
-            return string0 + string1;
+            return string0;
         }
 
 

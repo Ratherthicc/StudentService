@@ -32,21 +32,10 @@ namespace StudentskaSluzba.model
         }
 
         // Constructor:
-        public Student(
-            int studentId,
-            String name,
-            String surname,
-            DateTime dateOfBirth,
-            Adresa address,
-            String phoneNumber,
-            String email,
-            String idNumber,
-            int yearOfEnrollment,
-            int yearOfStudy,
-            Status methodOfFinancing,
-            float avgGrade
+        public Student( int studentId, String name,String surname,DateTime dateOfBirth,Adresa address,String phoneNumber, String email,String idNumber,int yearOfEnrollment,
+            int yearOfStudy,Status methodOfFinancing,float avgGrade)
           
-         )
+         
         {
             this.studentId = studentId;
             this.name = name;
@@ -70,11 +59,9 @@ namespace StudentskaSluzba.model
       
       
 
-        // Defining methods from Serializable..
+       
 
-        // Napomena: Procitati napomenu 1 iz klase Profesor
-
-        // Data input:
+     
         public string[] ToCSV()
         {
           
@@ -140,33 +127,9 @@ namespace StudentskaSluzba.model
                                            "\nProsecna ocena: {10}",
                                            surname, name, dateOfBirth, adresaId, phoneNumber, email,
                                            idNumber, yearOfEnrollment, yearOfStudy, methodOfFinancing, avgGrade);
-            string string1 = "\nSpisak polozenih ispita: ";
-            if (gradesPassedSubjects.Count() == 0)
-            {
-                string1 += "NEMA";
-            }
-            else
-            {
-                foreach (Predmet o in gradesPassedSubjects)
-                {
-                    string1 += o.ToString();
-                }
-            }
+           
 
-            string string2 = "\nSpisak nepolozenih ispita: ";
-            if (remainingSubjects.Count() == 0)
-            {
-                string2 += "NEMA";
-            }
-            else
-            {
-                foreach (Predmet p in remainingSubjects)
-                {
-                    string2 += p.ToString();
-                }
-            }
-
-            return string0 + string1 + string2;
+            return string0;
         }
 
 

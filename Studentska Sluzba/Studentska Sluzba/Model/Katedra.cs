@@ -67,7 +67,7 @@ namespace StudentskaSluzba.model
         
             string string2 = "\nNaziv katedre: " + departmentName;
             string string3 = "\nSef katedre: " + Idchairman;
-            string string4 = "\nProfesori na katedri: " + lecturers.ToString(); //moguci error jer ToString na listi radimo a ne iteriramo kroz nju
+            string string4 = "\nProfesori na katedri: " + lecturers.ToString(); 
 
             return string0 + string2 + string3 + string4 + string5;
         }
