@@ -10,14 +10,17 @@ namespace StudentskaSluzba.model
     class Ocena : Serializable
     {
         public int OcjenaNaIspituId;
-        private Student student;
+        public Student student;
         public int studentId;
-        private Predmet subject;
+        public Predmet subject;
         public int predmetId;
-        private int grade;
-        private DateTime date;
+        public int grade;
+        public DateTime date;
 
-        public Ocena() { }
+        public Ocena() {
+        this. student = new Student();
+        this. subject = new Predmet();
+        }
 
         public Ocena(int OcjenaNaIspituId, int studentId, int predmetId, DateTime date)
         {
@@ -56,8 +59,8 @@ namespace StudentskaSluzba.model
 
         public override string ToString()
         {
-            string string0 = "\nStudent: " + student.ToString();
-            string string1 = "\nPredmet: " + Subject.ToString();
+            string string0 = "\nStudentID: " + studentId.ToString();
+            string string1 = "\nPredmetID: " + predmetId.ToString();
             string string2 = "\nOcena iz predmeta: " + grade;
             string string3 = "\nDatum polaganja: " + date.ToString();
 
@@ -72,7 +75,7 @@ namespace StudentskaSluzba.model
                 studentId.ToString(),
                 predmetId.ToString(),
                 grade.ToString(),
-                date.ToString()
+                date.ToString( "dd/MM/yyyy"),
             };
             return csvValues;
         }
@@ -83,7 +86,7 @@ namespace StudentskaSluzba.model
             studentId = int.Parse(values[1]);
             predmetId = int.Parse(values[2]);
             grade = int.Parse(values[3]);
-            date = DateTime.Parse(values[4]);
+            date = DateTime.ParseExact(values[4], "dd/MM/yyyy", null);
         }
     }
 }

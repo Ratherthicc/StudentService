@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Manager;
+﻿using Studentska_Sluzba.Manager;
+using StudentskaSluzba.Manager;
 using StudentskaSluzba.model;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,15 @@ namespace StudentskaSluzba.Console
         private ProfesorManager managerr;
         private KatedraManager katedra;
         private StudentManager s;
-        public ConsoleViewAll(AdresaManager manager, ProfesorManager managerr, PredmetManager pred, KatedraManager katedra, StudentManager s)
+        private OcenaManager o;
+        public ConsoleViewAll(AdresaManager manager, ProfesorManager managerr, PredmetManager pred, KatedraManager katedra, StudentManager s, OcenaManager o)
         {
             this.manager = manager;
             this.managerr = managerr;
             this.pred = pred;
             this.katedra = katedra;
             this.s = s;
+            this.o = o;
         }
         private void PrintAdrese(List<Adresa> adrese)
         {
@@ -73,6 +76,18 @@ namespace StudentskaSluzba.Console
                 System.Console.WriteLine(x);
             }
         }
+
+        private void PrintOcjene(List<Ocena> s)
+        {
+            System.Console.WriteLine("Ocjene: ");
+
+            foreach (Ocena x in s)
+            {
+                System.Console.WriteLine(x);
+            }
+        }
+
+
         private Adresa InputAdresa()
         {
             Adresa a1 = new Adresa();
@@ -127,7 +142,7 @@ namespace StudentskaSluzba.Console
 
 
             p.ResidentialAddress = manager.adrese[1];
-            p.AdresaStanovanjaId = manager.adrese[1].id;
+             p.AdresaStanovanjaId = manager.adrese[1].id;
            
 
             System.Console.WriteLine("Unesite broj telefona: ");
@@ -138,7 +153,7 @@ namespace StudentskaSluzba.Console
             string mejl = System.Console.ReadLine();
             p.Email = mejl;
 
-            p.OfficeAddress = manager.adrese[0];
+            p.OfficeAddress = manager.adrese[3];
             p.AdresaKancelarijeId = manager.adrese[0].id;
 
 
@@ -261,7 +276,7 @@ namespace StudentskaSluzba.Console
             student.yearOfEnrollment = godinaUpisa;
 
             System.Console.WriteLine("Trenutna godina studija: ");
-            int trenutnaGod = Convert.ToInt32(System.Console.ReadLine());
+            int trenutnaGod = SafeInputInt();
             student.yearOfStudy = trenutnaGod;
 
             System.Console.WriteLine("Nacin finansiranja (0 za Budzet ili 1 za Samofinansiranje): ");
@@ -276,7 +291,41 @@ namespace StudentskaSluzba.Console
             return student;
         }
 
+        private Ocena inputOcena()
+        {
+            Ocena ocjena = new Ocena();
 
+            System.Console.WriteLine("Unesite ID ocene na predmetu: ");
+            int ocenaId = SafeInputInt();
+            ocjena.OcjenaNaIspituId = ocenaId;
+
+            System.Console.WriteLine("Unesite ID studenta: ");
+            int studentId = SafeInputInt();
+            ocjena.studentId = studentId;
+
+            System.Console.WriteLine("Unesite ID predmeta: ");
+            int predmetId = SafeInputInt();
+            ocjena.predmetId = predmetId;
+
+            System.Console.WriteLine("Unesite ocenu (od 6 do 10): ");
+            int ocijena;
+            do
+           {
+                ocijena = SafeInputInt();
+            } while (ocijena < 6 || ocijena > 10);
+            ocjena.grade = ocijena;
+
+            System.Console.WriteLine("Unesite datum polaganja: ");
+            string s = System.Console.ReadLine();
+            ocjena.date = DateTime.ParseExact(s, "dd/MM/yyyy", null);
+
+
+            return ocjena;
+
+
+
+
+        }
 
         private void AddAdresa()
         {
@@ -315,6 +364,14 @@ namespace StudentskaSluzba.Console
 
         }
 
+        private void AddOcjena()
+        {
+            Ocena m = inputOcena();
+            o.AddOcjena(m);
+            System.Console.WriteLine("Ocjena added");
+
+        }
+
         private void ShowMenu()
         {
             System.Console.WriteLine("\nChoose an option: ");
@@ -328,6 +385,8 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("8: Dodaj katedre");
             System.Console.WriteLine("9: Prikazi studente");
             System.Console.WriteLine("10: Dodaj studenta");
+            System.Console.WriteLine("11: Prikazi ocjene");
+            System.Console.WriteLine("12: Dodaj ocjene");
 
 
 
@@ -379,6 +438,12 @@ namespace StudentskaSluzba.Console
                     break;
                 case "10":
                     AddStudent();
+                    break;
+                case "11":
+                    PrintOcjene(o.GetAllOcjene());
+                    break;
+                case "12":
+                    AddOcjena();    
                     break;
             }
         }

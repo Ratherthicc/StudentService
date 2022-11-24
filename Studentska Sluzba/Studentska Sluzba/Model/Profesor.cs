@@ -27,6 +27,9 @@ namespace StudentskaSluzba.model
 
         public Profesor() {
             teachSubjects = new List<Predmet>();
+            Adresa residentialAdress = new Adresa();
+            Adresa officeAddress = new Adresa();
+
         }
 
         public Profesor(int profesorId, String surname, String name, DateTime dateOfBirth, Adresa residentialAddress, String contactPhone,
@@ -47,6 +50,7 @@ namespace StudentskaSluzba.model
             teachSubjects = new List<Predmet>();
             AdresaStanovanjaId = this.residentialAddress.id;
             AdresaKancelarijeId = this.officeAddress.id;
+
         }
 
 

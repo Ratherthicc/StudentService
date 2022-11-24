@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Console;
+﻿using Studentska_Sluzba.Manager;
+using StudentskaSluzba.Console;
 using StudentskaSluzba.Manager;
 using StudentskaSluzba.model;
 using System;
@@ -17,7 +18,8 @@ namespace StudentskaSluzba
             PredmetManager predmet = new PredmetManager();
             KatedraManager katedra = new KatedraManager();
             StudentManager stud = new StudentManager();
-            ConsoleViewAll view = new ConsoleViewAll(manager, managerr, predmet, katedra, stud);
+            OcenaManager ocena = new OcenaManager();
+            ConsoleViewAll view = new ConsoleViewAll(manager, managerr, predmet, katedra, stud,ocena);
             view.RunMenu();
         }
     }
