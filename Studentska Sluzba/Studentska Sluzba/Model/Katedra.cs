@@ -14,7 +14,7 @@ namespace StudentskaSluzba.model
         private String departmentName;
         public Profesor chairman;
         public int Idchairman;
-        private List<Profesor> lecturers;
+        public List<Profesor> lecturers;
 
         public Katedra() { 
         lecturers = new List<Profesor>();
@@ -67,7 +67,7 @@ namespace StudentskaSluzba.model
         
             string string2 = "\nNaziv katedre: " + departmentName;
             string string3 = "\nSef katedre: " + Idchairman;
-            string string4 = "\nProfesori na katedri: " + lecturers.ToString(); 
+            string string4 = "\nProfesori na katedri: " + lecturers.ToString(); // nece da ispise listu??
 
             return string0 + string2 + string3 + string4 + string5;
         }

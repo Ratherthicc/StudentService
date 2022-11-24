@@ -236,6 +236,7 @@ namespace StudentskaSluzba.Console
             k.Chairman = managerr.profesori[0];
             k.Idchairman = managerr.profesori[0].profesorId;
 
+            k.lecturers.Add(managerr.profesori[0]);
 
 
             return k;
@@ -409,8 +410,9 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("15: izbrisi studenta");
             System.Console.WriteLine("16: izbrisi profesora");
             System.Console.WriteLine("17: izbrisi predmet");
-            System.Console.WriteLine("18: prikaz studenata i polozenih ispita");
-            System.Console.WriteLine("19: prikaz studenata i nepolozenih ispita");
+            System.Console.WriteLine("18: izbrisi Ocjenu");
+            System.Console.WriteLine("19: prikaz studenata i polozenih ispita");
+            System.Console.WriteLine("20: prikaz studenata i nepolozenih ispita");
 
 
 
@@ -461,9 +463,17 @@ namespace StudentskaSluzba.Console
 
         public void brisanjePredmeta()
         {
-            System.Console.WriteLine("unesite id profesora kojeg zelite izbrisati: ");
+            System.Console.WriteLine("unesite id predmeta kog zelite izbrisati: ");
             int n = SafeInputInt();
             s.RemoveStudent(n);
+
+        }
+
+        public void brisanjeOcjene()
+        {
+            System.Console.WriteLine("unesite id ocjene koju zelite izbrisati: ");
+            int n = SafeInputInt();
+            o.RemoveOcjena(n);
 
         }
 
@@ -559,9 +569,12 @@ namespace StudentskaSluzba.Console
                     brisanjePredmeta();
                     break;
                 case "18":
-                    prikazPolaganja();
+                    brisanjeOcjene();
                     break;
                 case "19":
+                    prikazPolaganja();
+                    break;
+                case "20":
                     prikazNepoolaganja();
                     break;
 

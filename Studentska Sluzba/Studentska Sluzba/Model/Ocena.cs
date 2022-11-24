@@ -59,12 +59,13 @@ namespace StudentskaSluzba.model
 
         public override string ToString()
         {
+            string string00 = "\nOcjenaID: " + OcjenaNaIspituId.ToString();
             string string0 = "\nStudentID: " + studentId.ToString();
             string string1 = "\nPredmetID: " + predmetId.ToString();
             string string2 = "\nOcena iz predmeta: " + grade;
             string string3 = "\nDatum polaganja: " + date.ToString();
 
-            return string0 + string1 + string2 + string3;
+            return string00 + string0 + string1 + string2 + string3;
         }
 
         public string[] ToCSV()

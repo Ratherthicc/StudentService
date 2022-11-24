@@ -127,9 +127,33 @@ namespace StudentskaSluzba.model
                                            "\nProsecna ocena: {10}",
                                            surname, name, dateOfBirth, adresaId, phoneNumber, email,
                                            idNumber, yearOfEnrollment, yearOfStudy, methodOfFinancing, avgGrade);
-           
+            string string1 = "\nSpisak polozenih ispita: ";
+            if (gradesPassedSubjects.Count() == 0)
+            {
+                string1 += "NEMA";
+            }
+            else
+            {
+                foreach (Predmet o in gradesPassedSubjects)
+                {
+                    string1 += o.ToString();
+                }
+            }
 
-            return string0;
+            string string2 = "\nSpisak nepolozenih ispita: ";
+            if (remainingSubjects.Count() == 0)
+            {
+                string2 += "NEMA";
+            }
+            else
+            {
+                foreach (Predmet p in remainingSubjects)
+                {
+                    string2 += p.ToString();
+                }
+            }
+
+            return string0 + string1 + string2;
         }
 
 
