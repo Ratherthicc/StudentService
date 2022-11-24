@@ -1,24 +1,30 @@
-﻿using Studentska_Sluzba.Manager;
+﻿using ConsoleAppExample.Manager.Serialization;
+using StudentskaSluzba.Manager;
 using StudentskaSluzba.Manager;
 using StudentskaSluzba.model;
+using StudentskaSluzba.Model;
 using System;
 using System.Collections.Generic;
 using System.Reflection.PortableExecutable;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+
 
 namespace StudentskaSluzba.Console
 {
+
     internal class ConsoleViewAll : ConsoleView
 
 
     {
         private PredmetManager pred;
+        private PolaganjeManager polaganje;
         private AdresaManager manager;
         private ProfesorManager managerr;
         private KatedraManager katedra;
         private StudentManager s;
         private OcenaManager o;
-        public ConsoleViewAll(AdresaManager manager, ProfesorManager managerr, PredmetManager pred, KatedraManager katedra, StudentManager s, OcenaManager o)
+        public ConsoleViewAll(AdresaManager manager, ProfesorManager managerr, PredmetManager pred, KatedraManager katedra, StudentManager s, OcenaManager o, PolaganjeManager polaganje)
         {
             this.manager = manager;
             this.managerr = managerr;
@@ -26,6 +32,7 @@ namespace StudentskaSluzba.Console
             this.katedra = katedra;
             this.s = s;
             this.o = o;
+            this.polaganje = polaganje;
         }
         private void PrintAdrese(List<Adresa> adrese)
         {
@@ -142,8 +149,8 @@ namespace StudentskaSluzba.Console
 
 
             p.ResidentialAddress = manager.adrese[1];
-             p.AdresaStanovanjaId = manager.adrese[1].id;
-           
+            p.AdresaStanovanjaId = manager.adrese[1].id;
+
 
             System.Console.WriteLine("Unesite broj telefona: ");
             string broj = System.Console.ReadLine();
@@ -269,10 +276,10 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Broj indeksa: ");
             string brIndeksa = System.Console.ReadLine();
             student.idNumber = brIndeksa;
-          //  brIndeksa.ToLower();
+            //  brIndeksa.ToLower();
 
             System.Console.WriteLine("Godina upisa: ");
-            int godinaUpisa = Convert.ToInt32(System.Console.ReadLine());
+            int godinaUpisa = SafeInputInt();
             student.yearOfEnrollment = godinaUpisa;
 
             System.Console.WriteLine("Trenutna godina studija: ");
@@ -310,7 +317,7 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("Unesite ocenu (od 6 do 10): ");
             int ocijena;
             do
-           {
+            {
                 ocijena = SafeInputInt();
             } while (ocijena < 6 || ocijena > 10);
             ocjena.grade = ocijena;
@@ -362,6 +369,16 @@ namespace StudentskaSluzba.Console
             s.AddStudent(m);
             System.Console.WriteLine("Student added");
 
+            StudentiPredmet x = new StudentiPredmet(m.studentId, 1);
+            polaganje.AddStudentiPolozili(x);
+            System.Console.WriteLine("polaganje added");
+
+            StudentiPredmet y = new StudentiPredmet(m.studentId, 2);
+            polaganje.AddStudentiNisuPolozili(y);
+            System.Console.WriteLine("polaganje added");
+
+
+
         }
 
         private void AddOcjena()
@@ -387,6 +404,13 @@ namespace StudentskaSluzba.Console
             System.Console.WriteLine("10: Dodaj studenta");
             System.Console.WriteLine("11: Prikazi ocjene");
             System.Console.WriteLine("12: Dodaj ocjene");
+            System.Console.WriteLine("13: izbrisi adresu");
+            System.Console.WriteLine("14: izbrisi katedru");
+            System.Console.WriteLine("15: izbrisi studenta");
+            System.Console.WriteLine("16: izbrisi profesora");
+            System.Console.WriteLine("17: izbrisi predmet");
+            System.Console.WriteLine("18: prikaz studenata i polozenih ispita");
+            System.Console.WriteLine("19: prikaz studenata i nepolozenih ispita");
 
 
 
@@ -404,6 +428,72 @@ namespace StudentskaSluzba.Console
                 HandleMenuInput(userInput);
             }
         }
+
+        public void brisanje()
+        {
+            System.Console.WriteLine("unesite id adrese koju zelite izbrisati: ");
+            int n = SafeInputInt();
+            manager.RemoveAdresa(n);
+        }
+
+        public void brisanjeKatedre()
+        {
+            System.Console.WriteLine("unesite id katedre koju zelite izbrisati: ");
+            int n = SafeInputInt();
+            katedra.RemoveKatedra(n);
+
+        }
+
+        public void brisanjeStudenta()
+        {
+            System.Console.WriteLine("unesite id studenta kojeg zelite izbrisati: ");
+            int n = SafeInputInt();
+            s.RemoveStudent(n);
+        }
+
+        public void brisanjeProfesora()
+        {
+            System.Console.WriteLine("unesite id profesora kojeg zelite izbrisati: ");
+            int n = SafeInputInt();
+
+            managerr.RemoveProfesor(n);
+        }
+
+        public void brisanjePredmeta()
+        {
+            System.Console.WriteLine("unesite id profesora kojeg zelite izbrisati: ");
+            int n = SafeInputInt();
+            s.RemoveStudent(n);
+
+        }
+
+        public void prikazPolaganja()
+        {
+
+            System.Console.WriteLine("spisak parova studentID - predmed POLAGANJA ");
+
+             List<StudentiPredmet> spisak = polaganje.getStudentiPolozili();
+            foreach (StudentiPredmet v in spisak)
+            {
+                System.Console.WriteLine(v);
+            }
+        }
+
+        public void prikazNepoolaganja()
+        {
+
+            System.Console.WriteLine("spisak parova studentID - predmed NEPOLOZENIH ");
+
+            List<StudentiPredmet> spisak = polaganje.getStudentiNisuPolozili();
+            foreach (StudentiPredmet v in spisak)
+            {
+                System.Console.WriteLine(v);
+            }
+        }
+
+
+
+
 
         private void HandleMenuInput(string input)
         {
@@ -445,7 +535,33 @@ namespace StudentskaSluzba.Console
                 case "12":
                     AddOcjena();    
                     break;
+                case "13":
+                    brisanje();
+                    break;
+                case "14":
+                    brisanjeKatedre();
+                    break;
+                case "15":
+                    brisanjeStudenta();
+                    break;
+                case "16":
+                    brisanjeProfesora();
+                    break;
+                case "17":
+                    brisanjePredmeta();
+                    break;
+                case "18":
+                    prikazPolaganja();
+                    break;
+                case "19":
+                    prikazNepoolaganja();
+                    break;
+
+
             }
+
+
+         
         }
     }
 }

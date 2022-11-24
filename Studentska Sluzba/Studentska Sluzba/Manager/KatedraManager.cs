@@ -41,9 +41,22 @@ namespace StudentskaSluzba.Manager
             SaveKatedre();
             return katedra;
         }
-  
 
-     
+        public Katedra RemoveKatedra(int id)
+        {
+            Katedra x = GetKatedreaid(id);
+            if (x == null) return null;
+
+            katedre.Remove(x);
+            SaveKatedre();
+            return x;
+        }
+
+        public Katedra GetKatedreaid(int id)
+        {
+            return katedre.Find(v => v.IdKatedre == id);
+        }
+
 
         public List<Katedra> GetAllKatedras()
         {

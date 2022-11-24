@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Studentska_Sluzba.Manager
+namespace StudentskaSluzba.Manager
 {
     internal class OcenaManager
     {

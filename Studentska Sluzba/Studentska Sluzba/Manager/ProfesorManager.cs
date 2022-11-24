@@ -42,7 +42,7 @@ namespace StudentskaSluzba.Manager
                 SaveProfesori();
                 return x;
             }
-            public Profesor RemoveAdresa(string id)
+            public Profesor? RemoveProfesor(int id)
             {
                 Profesor x = GetAdreseeById(id);
                 if (x == null) return null;
@@ -52,9 +52,9 @@ namespace StudentskaSluzba.Manager
                 return x;
             }
 
-            public Profesor GetAdreseeById(string id)
+            public Profesor GetAdreseeById(int id)
             {
-                return profesori.Find(v => v.IdNumber == id);
+                return profesori.Find(match: v => v.profesorId == id);
             }
 
             public List<Profesor> GetAllProfesors()
