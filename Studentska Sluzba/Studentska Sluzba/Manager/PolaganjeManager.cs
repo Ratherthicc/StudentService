@@ -1,4 +1,4 @@
-﻿using ConsoleAppExample.Manager.Serialization;
+﻿using StudentskaSluzba.Manager.Serializer;
 using StudentskaSluzba.model;
 using StudentskaSluzba.Model;
 using System;

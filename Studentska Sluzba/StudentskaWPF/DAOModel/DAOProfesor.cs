@@ -1,4 +1,7 @@
-﻿using System;
+﻿using StudentskaSluzba.model;
+using StudentskaWPF.Observer;
+using StudentskaWPF.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +11,73 @@ namespace StudentskaWPF.DAOModel
 {
     class DAOProfesor
     {
+
+        private List<IObserver> observers;
+
+        private ProfesorStorage storage;
+        private List<Profesor> profesori;
+
+        public DAOProfesor()
+        {
+            storage = new ProfesorStorage();
+            profesori = storage.Load();
+            observers = new List<IObserver>();
+        }
+
+        public int NextId()
+        {
+            return profesori.Max(s => s.Id) + 1;
+        }
+
+        public void Add(Profesor profesor)
+        {
+            profesor.profesorId = NextId();
+            profesori.Add(profesor);
+            storage.Save(profesori);
+            NotifyObservers();
+        }
+
+        public void Remove(Profesor profesor)
+        {
+            profesori.Remove(profesor);
+            storage.Save(profesori);
+            NotifyObservers();
+        }
+
+        public void Update(Profesor profesor)
+        {
+            int index = profesori.FindIndex(p => p.Id == profesor.Id);
+            if (index != -1)
+            {
+                profesori[index] = profesor;
+            }
+
+            storage.Save(profesori);
+            NotifyObservers();
+        }
+
+        public List<Profesor> GetAll()
+        {
+            return profesori;
+        }
+
+        public void Subscribe(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+
+        public void Unsubscribe(IObserver observer)
+        {
+                observers.Remove(observer);
+        }
+
+        public void NotifyObservers()
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update();
+            }
+        }
     }
 }
+

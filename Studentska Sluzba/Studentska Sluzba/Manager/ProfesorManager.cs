@@ -1,6 +1,6 @@
-﻿ using ConsoleAppExample.Manager.Serialization;
+﻿ using StudentskaSluzba.Manager.Serializer;
 using StudentskaSluzba.model;
-using StudentskaSluzba.Serializer;
+
 using System;
 using System.Collections.Generic;
 using System.Text;

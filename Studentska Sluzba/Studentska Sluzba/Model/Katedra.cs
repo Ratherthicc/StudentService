@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentskaSluzba.Serializer;
+using StudentskaSluzba.Manager.Serializer;
+
 
 namespace StudentskaSluzba.model
 {
-    class Katedra : Serializable
+    public class Katedra : Serializable
     {
         public int IdKatedre;
         private String departmentCode;
@@ -18,6 +19,7 @@ namespace StudentskaSluzba.model
 
         public Katedra() { 
         lecturers = new List<Profesor>();
+
         }
 
         public Katedra(int IdKatedre,String departmentCode, String departmentName, Profesor chairman)
