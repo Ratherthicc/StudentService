@@ -9,56 +9,59 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.DAOModel
 {
-    class DAOProfesor
+    class DAOStudent
     {
-
         private List<IObserver> observers;
 
-        private ProfesorStorage storage;
-        private List<Profesor> profesori;
+        private StudentStorage storage;
+        private List<Student> studenti;
 
-        public DAOProfesor()
+        public DAOStudent()
         {
-            storage = new ProfesorStorage();
-            profesori = storage.Load();
+            storage = new StudentStorage();
+            studenti = storage.Load();
             observers = new List<IObserver>();
         }
 
         public int NextId()
         {
-            return profesori.Max(s => s.profesorId) + 1;
+            return studenti.Max(s => s.studentId) + 1;
         }
 
-        public void Add(Profesor profesor)
+        public void Add(Student student)
         {
-            profesor.profesorId = NextId();
-            profesori.Add(profesor);
-            storage.Save(profesori);
+            student.studentId = NextId();
+            studenti.Add(student);
+            storage.Save(studenti);
             NotifyObservers();
         }
 
-        public void Remove(Profesor profesor)
+        public void Remove(Student student)
         {
-            profesori.Remove(profesor);
-            storage.Save(profesori);
+            studenti.Remove(student);
+            storage.Save(studenti);
             NotifyObservers();
         }
 
-      /*  public void Update(Profesor profesor)
+      /*  public void Update(Student student)
         {
-            int index = profesori.FindIndex(p => p.profesorId == profesor.profesorId);
+
+            int index = studenti.FindIndex(s => s.studentId == student.studentId);
+
             if (index != -1)
             {
-                profesori[index] = profesor;
+                studenti[index] = student;
             }
-
-            storage.Save(profesori);
+            storage.Save(studenti);
             NotifyObservers();
-        }
-       */    //nisam siguran dal ce ovo raditi
-        public List<Profesor> GetAll()
+
+
+
+        } */  //nisam siguran hoce li ovo raditi takodje
+
+        public List<Student> GetAll()
         {
-            return profesori;
+            return studenti;
         }
 
         public void Subscribe(IObserver observer)
@@ -68,7 +71,7 @@ namespace StudentskaWPF.DAOModel
 
         public void Unsubscribe(IObserver observer)
         {
-                observers.Remove(observer);
+            observers.Remove(observer);
         }
 
         public void NotifyObservers()
