@@ -1,19 +1,19 @@
-﻿using System;
+﻿using StudentskaSluzba.Manager.Serializer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentskaSluzba.Serializer;
 
 namespace StudentskaSluzba.model
 {
-    class Student : Serializable
+   public class Student : Serializable
     {
         public int studentId { get; set; }
         public String name { get; set; }
         public String surname { get; set; }
         public DateTime dateOfBirth { get; set; }
-        public Adresa address { get; set; }
+        public Adresa adress { get; set; }
         public int adresaId { get; set; }
         public String phoneNumber { get; set; }
         public String email { get; set; }
@@ -41,7 +41,7 @@ namespace StudentskaSluzba.model
             this.name = name;
             this.surname = surname;
             this.dateOfBirth = dateOfBirth;
-            this.address = address;
+            this.adress = address;
             this.phoneNumber = phoneNumber;
             this.email = email;
             this.idNumber = idNumber;
@@ -52,7 +52,7 @@ namespace StudentskaSluzba.model
            
             gradesPassedSubjects = new List<Predmet>();
             remainingSubjects = new List<Predmet>();
-            adresaId = this.address.id;
+            adresaId = this.adress.id;
 
         }
 

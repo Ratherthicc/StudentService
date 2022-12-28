@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Serializer;
+﻿using StudentskaSluzba.Manager.Serializer;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

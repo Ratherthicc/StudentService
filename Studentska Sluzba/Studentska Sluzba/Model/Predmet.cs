@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudentskaSluzba.Serializer;
+using StudentskaSluzba.Manager.Serializer;
+
 
 namespace StudentskaSluzba.model
 {
-    class Predmet : Serializable
+   public class Predmet : Serializable
     {
         public int PredmetId;
         private String id;

@@ -1,4 +1,4 @@
-﻿using StudentskaSluzba.Serializer;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleAppExample.Manager.Serialization
+namespace StudentskaSluzba.Manager.Serializer
 {
-    class Serializer<T> where T : Serializable, new()
+   public class Serializer<T> where T : Serializable, new()
     {
         private static char DELIMITER = '|';
         public void ToCSV(string fileName, List<T> objects)

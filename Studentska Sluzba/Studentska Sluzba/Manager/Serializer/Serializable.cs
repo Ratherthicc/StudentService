@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentskaSluzba.Serializer
+namespace StudentskaSluzba.Manager.Serializer
 {
     public interface Serializable
     {

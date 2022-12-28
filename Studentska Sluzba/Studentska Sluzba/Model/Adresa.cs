@@ -1,4 +1,5 @@
-﻿using StudentskaSluzba.Serializer;
+﻿using StudentskaSluzba.Manager.Serializer;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Xml.Linq;
 
 namespace StudentskaSluzba.model
 {
-    class Adresa : Serializable
+    public class Adresa : Serializable
     {
         public int id { get; set; }
         private String street;
