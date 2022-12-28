@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.Observer
 {
-    interface IObserver
+   public interface IObserver
     {
         void Update();
     }

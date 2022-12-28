@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.DAOModel
 {
-    class DAOStudent
+    class DAOStudent: ISubject
     {
         private List<IObserver> observers;
 
