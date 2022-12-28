@@ -160,7 +160,7 @@ namespace StudentskaSluzba.Console
             string mejl = System.Console.ReadLine();
             p.Email = mejl;
 
-            p.OfficeAddress = manager.adrese[3];
+            p.OfficeAddress = manager.adrese[0];
             p.AdresaKancelarijeId = manager.adrese[0].id;
 
 

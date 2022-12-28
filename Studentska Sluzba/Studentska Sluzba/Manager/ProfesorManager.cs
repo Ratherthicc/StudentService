@@ -39,6 +39,7 @@ namespace StudentskaSluzba.Manager
             {
                 
                 profesori.Add(x);
+
                 SaveProfesori();
                 return x;
             }
@@ -58,7 +59,10 @@ namespace StudentskaSluzba.Manager
             }
 
             public List<Profesor> GetAllProfesors()
-            {
+            { 
+
+
+
                 return profesori;
             }
         }
