@@ -19,6 +19,7 @@ using System.Windows.Threading;
 using StudentskaWPF.Observer;
 using System.Xml.Serialization;
 using StudentskaWPF.DAOModel;
+using StudentskaWPF.Storage;
 
 namespace StudentskaWPF
 {
@@ -149,20 +150,7 @@ namespace StudentskaWPF
             }
         }
 
-        private void File_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Profesori_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
@@ -206,9 +194,110 @@ namespace StudentskaWPF
             return result;
         }
 
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+            {
+                if (SelectedStudent != null)
+                {
+                    string sMessageBoxText = $"Prikaz studenta\n{SelectedStudent}";
+                    MessageBox.Show(sMessageBoxText);
+
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati studenta za prikaz");
+                }
+
+            }
+            else if (tabControl.SelectedIndex == 1)
+            {
+                if (SelectedProfesor != null)
+                {
+                    string sMessageBoxText = $"Prikaz profesora\n{SelectedProfesor}";
+                    MessageBox.Show(sMessageBoxText);
+
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati profesora za prikaz");
+                }
+
+            }
+            else if (tabControl.SelectedIndex == 2)
+            {
+                if (SelectedPredmet != null)
+                {
+                    string sMessageBoxText = $"Prikaz predmeta\n{SelectedPredmet}";
+                    MessageBox.Show(sMessageBoxText);
+
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati predmet za prikaz");
+                }
+
+            }
+
+        }
+
+        private void CloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            StudentStorage st = new StudentStorage();
+            ProfesorStorage ps = new ProfesorStorage();
+            PredmetStorage pt = new PredmetStorage();
+
+            st.Save(studentController.GetAllStudents());
+            ps.Save(profesorcontroller.GetAllProfesor());
+            pt.Save(predmetcontroller.GetAllPredmet());
+        }
+
+        private void UpdateText(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+                textUpdateTab.Text = "Studenti";
+            else if (tabControl.SelectedIndex == 1)
+                textUpdateTab.Text = "Profesori";
+            else if (tabControl.SelectedIndex == 2)
+                textUpdateTab.Text = "Predmeti";
+        }
+
+        private void UpdateStudentsList()
+        {
+            listastudenata.Clear();
+            foreach (var student in studentController.GetAllStudents())
+            {
+                listastudenata.Add(student);
+            }
+        }
+
+        private void UpdateProfesorList()
+        {
+            listaprofesora.Clear();
+            foreach (var profesor in profesorcontroller.GetAllProfesor())
+            {
+                listaprofesora.Add(profesor);
+            }
+        }
+
+        private void UpdatePredmetList()
+        {
+            listapredmeta.Clear();
+            foreach (var predmet in predmetcontroller.GetAllPredmet())
+            {
+                listapredmeta.Add(predmet);
+            }
+        }
+
         public void Update()
         {
-            throw new NotImplementedException();
+            UpdateStudentsList();
+            UpdateProfesorList();
+            UpdatePredmetList();
         }
     }
 }
