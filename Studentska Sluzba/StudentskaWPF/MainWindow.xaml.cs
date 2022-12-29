@@ -80,12 +80,12 @@ namespace StudentskaWPF
 
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void add_click(object sender, RoutedEventArgs e)
         {
             if (tabControl.SelectedIndex == 0)
             {
-            //    var otvoriAddStudent = new AddStudent(_studentcontroller);
-             //   otvoriAddStudent.Show();
+              // var otvoriAddStudent = new AddStudent(_studentcontroller);
+                // otvoriAddStudent.Show();
             }
             else if (tabControl.SelectedIndex == 1)
             {
@@ -94,13 +94,13 @@ namespace StudentskaWPF
             }
             else if (tabControl.SelectedIndex == 2)
             {
-           //     var otvoriAddPredmet = new AddPredmet(_predmetcontroller);
-           //     otvoriAddPredmet.Show();
+               var AddPredmet = new AddPredmet(predmetcontroller);
+               AddPredmet.Show();
             }
         }
 
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void delete_click(object sender, RoutedEventArgs e)
         {
 
             if (tabControl.SelectedIndex == 0)

@@ -15,12 +15,12 @@
         <Label Content="Godina studija izvodjenja" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label Content="Predmetni Profesor" HorizontalAlignment="Left" Margin="50,140,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label Content="Broj ESP bodova" HorizontalAlignment="Left" Margin="50,170,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="220,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="220,60,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="220,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="220,150,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="220,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="220,90,0,0" VerticalAlignment="Top" Width="120">
+        <TextBox Name="TextSifraPred" HorizontalAlignment="Left" Margin="220,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="imepred"  HorizontalAlignment="Left" Margin="220,60,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="godizv" HorizontalAlignment="Left" Margin="220,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="prof" HorizontalAlignment="Left" Margin="220,150,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="espb" HorizontalAlignment="Left" Margin="220,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="semstar" HorizontalAlignment="Left" Margin="220,90,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Letnji"/>
             <ComboBoxItem Content="Zimski"/>
         </ComboBox>

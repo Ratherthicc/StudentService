@@ -11,17 +11,42 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using StudentskaSluzba.model;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using StudentskaWPF.Controller;
 
 namespace StudentskaWPF
 {
     /// <summary>
     /// Interaction logic for addPredmet.xaml
     /// </summary>
-    public partial class addPredmet : Window
+    public partial class AddPredmet : Window, INotifyPropertyChanged
     {
-        public addPredmet()
+        PredmetController control;
+        public Predmet Predmet { get; set; }
+
+        public AddPredmet(PredmetController controller)
         {
+          
             InitializeComponent();
+
+            DataContext = this;
+            Predmet = new Predmet();
+            control = controller;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+
         }
     }
 }
