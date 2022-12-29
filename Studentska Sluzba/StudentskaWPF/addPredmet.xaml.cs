@@ -21,16 +21,14 @@ namespace StudentskaWPF
     /// <summary>
     /// Interaction logic for addPredmet.xaml
     /// </summary>
-    public partial class AddPredmet : Window, INotifyPropertyChanged
+    public partial class addPredmet : Window, INotifyPropertyChanged
     {
         PredmetController control;
         public Predmet Predmet { get; set; }
 
-        public AddPredmet(PredmetController controller)
+        public addPredmet(PredmetController controller)
         {
-          
             InitializeComponent();
-
             DataContext = this;
             Predmet = new Predmet();
             control = controller;
