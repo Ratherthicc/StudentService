@@ -1,0 +1,42 @@
+﻿<Window x:Class="StudentskaWPF.addStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentskaWPF"
+        mc:Ignorable="d"
+        Title="Dodavanje studenta" Height="452" Width="423">
+    <Grid Margin="0,0,10,14">
+        <TextBox HorizontalAlignment="Left" Margin="235,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="235,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="96,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793"/>
+        <Label Content="Ime" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prezime" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adresa stanovanja (id)" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top"/>
+        <Label Content="Broj Telefona" HorizontalAlignment="Left" Margin="50,140,0,0" VerticalAlignment="Top"/>
+        <Label Content="E-mail adresa" HorizontalAlignment="Left" Margin="50,170,0,0" VerticalAlignment="Top"/>
+        <Label Content="Broj indeksa" HorizontalAlignment="Left" Margin="50,200,0,0" VerticalAlignment="Top"/>
+        <Label Content="Godina upisa" HorizontalAlignment="Left" Margin="50,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="Trenutna godina studija" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nacin finansiranja" HorizontalAlignment="Left" Margin="50,290,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="235,260,0,0" VerticalAlignment="Top" Width="120" SelectedValue="1 (prva)">
+            <ComboBoxItem Content="1 (prva)"/>
+            <ComboBoxItem Content="2 (druga)"/>
+            <ComboBoxItem Content="3 (treca)"/>
+            <ComboBoxItem Content="4 (cetvrta)"/>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="235,290,0,0" VerticalAlignment="Top" Width="120" SelectedValue="Budzet">
+            <ComboBoxItem Content="Budzet"/>
+            <ComboBoxItem Content="Samofinansiranje"/>
+        </ComboBox>
+
+    </Grid>
+</Window>

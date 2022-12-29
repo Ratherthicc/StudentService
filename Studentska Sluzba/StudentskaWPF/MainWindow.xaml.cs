@@ -79,7 +79,7 @@ namespace StudentskaWPF
 
         }
 
-        private void add_click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
             if (tabControl.SelectedIndex == 0)
             {
@@ -99,7 +99,7 @@ namespace StudentskaWPF
         }
 
 
-        private void delete_click(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
             if (tabControl.SelectedIndex == 0)
@@ -206,10 +206,9 @@ namespace StudentskaWPF
             return result;
         }
 
-
-
-
-
-
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
