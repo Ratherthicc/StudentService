@@ -12,31 +12,31 @@
     <DockPanel Margin="0,0,0,0">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="New"   InputGestureText="Ctrl+N">
+                <MenuItem Header="New"  Click="Add_Click" InputGestureText="Ctrl+N">
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/plus.png" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="Save"  InputGestureText="Ctrl+S" >
+                <MenuItem Header="Save" Click="Save_Click" InputGestureText="Ctrl+S" >
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/save.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Open"  InputGestureText="Ctrl+O"></MenuItem>
-                <MenuItem Header="Close"  InputGestureText="Ctrl+C">
+                <MenuItem Header="Open" Click="Open_Click" InputGestureText="Ctrl+O"></MenuItem>
+                <MenuItem Header="Close" Click="CloseMenu_Click" InputGestureText="Ctrl+C">
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/cancel.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Edit"  InputGestureText="Ctrl+E">
+                <MenuItem Header="Edit" Click="Update_Click" InputGestureText="Ctrl+E">
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/editing.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Delete"  InputGestureText="Ctrl+D">
+                <MenuItem Header="Delete" Click="Button_Click_Delete" InputGestureText="Ctrl+D">
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/trash.png" />
                     </MenuItem.Icon>
@@ -52,13 +52,13 @@
         </Menu>
 
         <ToolBar x:Name="toolBar" Height="36" VerticalAlignment="Top" Width="1010" Margin="0,0,0,0" RenderTransformOrigin="0,0" >
-            <Button x:Name="Button"  Height="32" VerticalAlignment="Top" Width="75" Margin="0,0,0,0"  >
+            <Button x:Name="Button"  Height="32" VerticalAlignment="Top" Width="75" Margin="0,0,0,0" Click="Add_Click"  >
                 <Image Source="DAOModel/Icons/plus.png" />
             </Button>
-            <Button x:Name="button" Height="32" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,-1"  >
+            <Button x:Name="button" Height="32" VerticalAlignment="Bottom" Width="75" Margin="0,0,0,-1" Click="Update_Click" >
                 <Image Source="DAOModel/Icons/editing.png" />
             </Button>
-            <Button x:Name="button1"  Height="32" VerticalAlignment="Top" Width="75" Margin="0,0,0,0"  >
+            <Button x:Name="button1"  Height="32" VerticalAlignment="Top" Width="75" Margin="0,0,0,0" Click="delete_click" >
                 <Image Source="DAOModel/Icons/trash.png" />
             </Button>
             <TextBox x:Name="textBox" Height="21" Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="2.196,1.095" />
@@ -77,41 +77,41 @@
         <StackPanel Margin="-1024.5,0,1,77" Width="923" RenderTransformOrigin="0.53,0.406" Height="353" VerticalAlignment="Bottom">
             <TabControl x:Name="tabControl" Height="340" >
                 <TabItem Header="Studenti" Height="23" VerticalAlignment="Top">
-                    <DataGrid Grid.Row="1" x:Name="DataGridStudent" ItemsSource="{Binding StudentList, UpdateSourceTrigger=PropertyChanged}"
+                    <DataGrid Grid.Row="1" x:Name="DataGridStudent" ItemsSource="{Binding listastudenata, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,84,7" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Indeks" Width="140" Binding="{Binding Broj_indeksa}"/>
-                            <DataGridTextColumn Header="Ime" Width="110" Binding="{Binding Ime}"/>
-                            <DataGridTextColumn Header="Prezime" Width="130" Binding="{Binding Prezime}"/>
-                            <DataGridTextColumn Header="Godina studija" Width="190" Binding="{Binding Trenutna_godina_studija}"/>
-                            <DataGridTextColumn Header="Status" Width="110" Binding="{Binding Nacin_finansiranja}"/>
-                            <DataGridTextColumn Header="Prosek" Width="110" Binding="{Binding Prosecna_ocena}"/>
+                            <DataGridTextColumn Header="Indeks" Width="140" Binding="{Binding id_number}"/>
+                            <DataGridTextColumn Header="Ime" Width="110" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Prezime" Width="130" Binding="{Binding surname}"/>
+                            <DataGridTextColumn Header="Godina studija" Width="190" Binding="{Binding yearOfEnrollment}"/>
+                            <DataGridTextColumn Header="Status" Width="110" Binding="{Binding methodOfFinancing}"/>
+                            <DataGridTextColumn Header="Prosek" Width="110" Binding="{Binding avgGrade}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Profesori">
-                    <DataGrid Grid.Row="1" x:Name="DataGridProfesor" ItemsSource="{Binding ProfesorList, UpdateSourceTrigger=PropertyChanged}"
+                    <DataGrid Grid.Row="1" x:Name="DataGridProfesor"  ItemsSource="{Binding listaprofesora, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedProfesor, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,113,7" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime" Width="120" Binding="{Binding Ime}"/>
-                            <DataGridTextColumn Header="Prezime" Width="140" Binding="{Binding Prezime}"/>
-                            <DataGridTextColumn Header="Zvanje" Width="200" Binding="{Binding Zvanje}"/>
-                            <DataGridTextColumn Header="E-mail adresa" Width="300" Binding="{Binding Email}"/>
+                            <DataGridTextColumn Header="Ime" Width="120" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Prezime" Width="140" Binding="{Binding surname}"/>
+                            <DataGridTextColumn Header="Zvanje" Width="200" Binding="{Binding title}"/>
+                            <DataGridTextColumn Header="E-mail adresa" Width="300" Binding="{Binding email}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Predmeti">
-                    <DataGrid Grid.Row="1" x:Name="DataGridPredmet" ItemsSource="{Binding PredmetList, UpdateSourceTrigger=PropertyChanged}"
+                    <DataGrid Grid.Row="1" x:Name="DataGridPredmet" ItemsSource="{Binding listapredmeta, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedPredmet, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,163,7">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Šifra predmeta" Width="90" Binding="{Binding Sifra_predmeta}"/>
-                            <DataGridTextColumn Header="Naziv predmeta" Width="300" Binding="{Binding Naziv_predmeta}"/>
-                            <DataGridTextColumn Header="Broj ESPB bodova" Width="120" Binding="{Binding Broj_ESPB}"/>
-                            <DataGridTextColumn Header="Godina" Width="100" Binding="{Binding Godina_studija_ukojoj_se_predmet_izvodi}"/>
-                            <DataGridTextColumn Header="Semestar" Width="100" Binding="{Binding Semestar}"/>
+                            <DataGridTextColumn Header="Šifra predmeta" Width="90" Binding="{Binding id}"/>
+                            <DataGridTextColumn Header="Naziv predmeta" Width="300" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Broj ESPB bodova" Width="120" Binding="{Binding espb}"/>
+                            <DataGridTextColumn Header="Godina" Width="100" Binding="{Binding yearOfStudy}"/>
+                            <DataGridTextColumn Header="Semestar" Width="100" Binding="{Binding semester}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
