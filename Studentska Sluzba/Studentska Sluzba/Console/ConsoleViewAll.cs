@@ -1,4 +1,4 @@
-﻿using ConsoleAppExample.Manager.Serialization;
+﻿
 using StudentskaSluzba.Manager;
 using StudentskaSluzba.Manager;
 using StudentskaSluzba.model;
@@ -263,7 +263,6 @@ namespace StudentskaSluzba.Console
             student.dateOfBirth = datumRodjenja;
 
 
-            student.address = manager.adrese[1];
             student.adresaId = manager.adrese[1].id;
 
             System.Console.WriteLine("Kontakt telefon: ");

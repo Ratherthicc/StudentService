@@ -25,6 +25,19 @@ namespace StudentskaWPF
             InitializeComponent();
         }
 
-     
+        private void File_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Profesori_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

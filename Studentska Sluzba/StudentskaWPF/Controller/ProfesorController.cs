@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.Controller
 {
-    class ProfesorController
+   public class ProfesorController
     {
 
         private DAOProfesor profesori;
