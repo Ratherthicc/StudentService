@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,18 @@ using StudentskaSluzba.Manager.Serializer;
 
 namespace StudentskaSluzba.model
 {
-    public class Profesor  : Serializable
+    public class Profesor  : Serializable, INotifyPropertyChanged
     {
         public int profesorId { get; set; }
         private String surname;
         private String name;
         private DateTime dateOfBirth;
         private Adresa residentialAddress;
-        public int AdresaStanovanjaId { get; set; }
+        public int adresaStanovanjaId { get; set; }
         private String contactPhone;
         private String email;
         private Adresa officeAddress;
-        public int AdresaKancelarijeId { get; set; } //
+        public int adresaKancelarijeId { get; set; } //
         private String idNumber;
         private String title;
         private int yearsOfTrail;
@@ -33,24 +34,24 @@ namespace StudentskaSluzba.model
 
         }
 
-        public Profesor(int profesorId, String surname, String name, DateTime dateOfBirth, Adresa residentialAddress, String contactPhone,
-                String email, Adresa officeAddress, String idNumber, String title, int yearsOfTrail
+        public Profesor(int profesorId, String surname, String name, DateTime dateOfBirth, int adresaStanovanjaId, String contactPhone,
+                String email, int AdresaKancelarijeId, String idNumber, String title, int yearsOfTrail
                 )
         {
             this.profesorId = profesorId;
             this.surname = surname;
             this.name = name;
             this.dateOfBirth = dateOfBirth;
-            this.residentialAddress = residentialAddress;
+         
             this.contactPhone = contactPhone;
             this.email = email;
-            this.officeAddress = officeAddress;
+          
             this.idNumber = idNumber;
             this.title = title;
             this.yearsOfTrail = yearsOfTrail;
-            teachSubjects = new List<Predmet>();
-            AdresaStanovanjaId = this.residentialAddress.id;
-            AdresaKancelarijeId = this.officeAddress.id;
+           
+            this.adresaStanovanjaId = adresaStanovanjaId;
+            this.adresaKancelarijeId = AdresaKancelarijeId;
 
         }
 
@@ -58,7 +59,7 @@ namespace StudentskaSluzba.model
         public string Surname
         {
             get { return surname; } // get metoda
-            set { surname = value; } // set metoda
+            set { surname = value; OnPropertyChanged("surname"); }
         }
 
 
@@ -66,7 +67,7 @@ namespace StudentskaSluzba.model
         public string Name
         {
             get { return name; } // get metoda
-            set { name = value; } // set metoda
+            set { name = value; OnPropertyChanged("name"); }
         }
 
         public DateTime DateOfBirth
@@ -93,7 +94,7 @@ namespace StudentskaSluzba.model
         public String Email
         {
             get { return email; }
-            set { email = value; }
+            set { email = value; OnPropertyChanged("email"); }
         }
 
 
@@ -113,7 +114,7 @@ namespace StudentskaSluzba.model
         public String Title
         {
             get { return title; }
-            set { title = value; }
+            set { title = value; OnPropertyChanged("title"); }
         }
 
 
@@ -144,15 +145,15 @@ namespace StudentskaSluzba.model
             string[] csvValues =
             {
                 profesorId.ToString(),
-                Surname,
-                Name,
-                DateOfBirth.ToString( "dd/MM/yyyy"),
-                AdresaStanovanjaId.ToString(),
-                ContactPhone.ToString(),
-                Email,
-                AdresaKancelarijeId.ToString(),
-                IdNumber,
-                Title,
+                surname,
+                name,
+                dateOfBirth.ToString( "dd/MM/yyyy"),
+                adresaStanovanjaId.ToString(),
+                contactPhone.ToString(),
+                email,
+                adresaKancelarijeId.ToString(),
+                idNumber,
+                title,
                 yearsOfTrail.ToString()
 
             };
@@ -164,18 +165,18 @@ namespace StudentskaSluzba.model
         {
 
             profesorId = Convert.ToInt32(values[0]);
-            Surname = values[1];
-            Name = values[2];
-            DateOfBirth = DateTime.ParseExact(values[3], "dd/MM/yyyy", null);
-            AdresaStanovanjaId = Convert.ToInt32(values[4]);
-            ContactPhone = values[5];
-            Email = values[6];
+            surname = values[1];
+            name = values[2];
+            dateOfBirth = DateTime.ParseExact(values[3], "dd/MM/yyyy", null);
+            adresaStanovanjaId = Convert.ToInt32(values[4]);
+            contactPhone = values[5];
+            email = values[6];
 
-            AdresaKancelarijeId = Convert.ToInt32(values[7]);
+            adresaKancelarijeId = Convert.ToInt32(values[7]);
 
-            IdNumber = values[8];
-            Title = values[9];
-            YearsOfTrail = int.Parse(values[10]);
+            idNumber = values[8];
+            title = values[9];
+            yearsOfTrail = int.Parse(values[10]);
         }
 
 
@@ -192,8 +193,8 @@ namespace StudentskaSluzba.model
                                            "\nBroj licne karte: {7}" +
                                            "\nZvanje: {8}" +
                                            "\nGodine staza: {9}",
-                                           surname, name, dateOfBirth,AdresaStanovanjaId, contactPhone, email,
-                                           AdresaKancelarijeId, idNumber, title, yearsOfTrail);
+                                           surname, name, dateOfBirth,adresaStanovanjaId, contactPhone, email,
+                                           adresaKancelarijeId, idNumber, title, yearsOfTrail);
             string string1 = "\nPredmeti: ";
             foreach (Predmet p in teachSubjects)
             {
@@ -202,6 +203,12 @@ namespace StudentskaSluzba.model
 
             return string0 + string1;
 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
 

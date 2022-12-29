@@ -1,27 +1,65 @@
 ﻿using StudentskaSluzba.Manager.Serializer;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace StudentskaSluzba.model
 {
-   public class Student : Serializable
+   public class Student : Serializable, INotifyPropertyChanged
     {
         public int studentId { get; set; }
         public String name { get; set; }
+
+        public String Name
+        {
+            get { return name; }
+            set { name = value; OnPropertyChanged("name"); }
+        }
         public String surname { get; set; }
+
+        public String Surname
+        {
+            get { return surname; }
+            set { surname = value; OnPropertyChanged("surname"); }
+        }
         public DateTime dateOfBirth { get; set; }
         public Adresa adress { get; set; }
         public int adresaId { get; set; }
         public String phoneNumber { get; set; }
         public String email { get; set; }
         public String idNumber { get; set; }
+
+        public String IdNumber
+        {
+            get { return idNumber; }
+            set { idNumber = value; OnPropertyChanged("idNumber"); }
+        }
         public int yearOfEnrollment { get; set; }
+        public int YearOfEnrollment
+        {
+            get { return yearOfEnrollment; }
+            set { yearOfEnrollment = value; OnPropertyChanged("yearOfEnrollment"); }
+        }
+
         public int yearOfStudy { get; set; }
         public Status methodOfFinancing { get; set; }
+
+        public Status MethodOfFinancing
+        {
+            get { return methodOfFinancing; }
+            set { methodOfFinancing = value; OnPropertyChanged("yearOfEnrollment"); }
+        }
         public float avgGrade { get; set; }
+
+        public float AvgGrade
+        {
+            get { return avgGrade; }
+            set { avgGrade = value; OnPropertyChanged("avgGrade"); }
+        }
+
         public List<Predmet> gradesPassedSubjects;
         public List<Predmet> remainingSubjects;
 
@@ -32,7 +70,7 @@ namespace StudentskaSluzba.model
         }
 
         // Constructor:
-        public Student( int studentId, String name,String surname,DateTime dateOfBirth,Adresa address,String phoneNumber, String email,String idNumber,int yearOfEnrollment,
+        public Student( int studentId, String name,String surname,DateTime dateOfBirth,int adresaId, String phoneNumber, String email,String idNumber,int yearOfEnrollment,
             int yearOfStudy,Status methodOfFinancing,float avgGrade)
           
          
@@ -41,7 +79,7 @@ namespace StudentskaSluzba.model
             this.name = name;
             this.surname = surname;
             this.dateOfBirth = dateOfBirth;
-            this.adress = address;
+            this.adresaId = adresaId;
             this.phoneNumber = phoneNumber;
             this.email = email;
             this.idNumber = idNumber;
@@ -52,7 +90,7 @@ namespace StudentskaSluzba.model
            
             gradesPassedSubjects = new List<Predmet>();
             remainingSubjects = new List<Predmet>();
-            adresaId = this.adress.id;
+           
 
         }
 
@@ -157,7 +195,11 @@ namespace StudentskaSluzba.model
         }
 
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
 
 

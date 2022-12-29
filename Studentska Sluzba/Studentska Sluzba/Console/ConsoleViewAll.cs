@@ -149,7 +149,7 @@ namespace StudentskaSluzba.Console
 
 
             p.ResidentialAddress = manager.adrese[1];
-            p.AdresaStanovanjaId = manager.adrese[1].id;
+            p.adresaStanovanjaId = manager.adrese[1].id;
 
 
             System.Console.WriteLine("Unesite broj telefona: ");
@@ -161,7 +161,7 @@ namespace StudentskaSluzba.Console
             p.Email = mejl;
 
             p.OfficeAddress = manager.adrese[0];
-            p.AdresaKancelarijeId = manager.adrese[0].id;
+            p.adresaKancelarijeId = manager.adrese[0].id;
 
 
             System.Console.WriteLine("Unesite jmbg: ");

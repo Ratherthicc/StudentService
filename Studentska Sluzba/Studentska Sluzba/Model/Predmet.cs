@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using StudentskaSluzba.Manager.Serializer;
 
 namespace StudentskaSluzba.model
 {
-   public class Predmet : Serializable
+   public class Predmet : Serializable, INotifyPropertyChanged
     {
         public int PredmetId;
         private String id;
@@ -16,6 +17,7 @@ namespace StudentskaSluzba.model
         private Semmester semester;
         private int yearOfStudy;
         private Profesor professor;
+
         public int ProfesorId { get; set; }
         private int espb;
         private List<Student> studentsPassed;
@@ -34,7 +36,7 @@ namespace StudentskaSluzba.model
             studentsRemaining = new List<Student>();
         }
 
-        public Predmet(int PredmetId , String id, String name, Semmester semester, int yearOfStudy, Profesor professor, int espb
+        public Predmet(int PredmetId , String id, String name, Semmester semester, int yearOfStudy, int ProfesorId, int espb
            )
         {
             this.PredmetId = PredmetId;
@@ -42,18 +44,24 @@ namespace StudentskaSluzba.model
             this.name = name;
             this.semester = semester;
             this.yearOfStudy = yearOfStudy;
-            this.professor = professor;
+           
             this.espb = espb;
-            ProfesorId = this.professor.profesorId;
+            this.ProfesorId = ProfesorId;
             studentsPassed = new List<Student>();
             studentsRemaining = new List<Student>();
-            ProfesorId = this.professor.profesorId;
+           
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public string Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; OnPropertyChanged("id"); }
         }
 
 
@@ -62,7 +70,7 @@ namespace StudentskaSluzba.model
         public String Name
         {
             get { return name; }
-            set { name = value; }
+            set { name = value; OnPropertyChanged("name"); }
         }
 
 
@@ -70,13 +78,13 @@ namespace StudentskaSluzba.model
         public Semmester Semester
         {
             get { return semester; }
-            set { semester = value; }
+            set { semester = value; OnPropertyChanged("semester"); }
         }
 
         public int YearOfStudy
         {
             get { return yearOfStudy; }
-            set { yearOfStudy = value; }
+            set { yearOfStudy = value; OnPropertyChanged("yearOfStudy"); }
         }
 
         public Profesor Profesor
@@ -89,7 +97,7 @@ namespace StudentskaSluzba.model
         public int Espb
         {
             get { return espb; }
-            set { espb = value; }
+            set { espb = value; OnPropertyChanged("espb"); }
         }
 
 
@@ -129,6 +137,7 @@ namespace StudentskaSluzba.model
             return csvValues;
         }
 
+      
         // Data read:
         public void FromCSV(string[] values)
         {
