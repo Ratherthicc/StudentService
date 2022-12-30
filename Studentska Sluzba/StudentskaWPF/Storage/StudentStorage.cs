@@ -10,7 +10,7 @@ namespace StudentskaWPF.Storage
 {
     class StudentStorage
     {
-        private const string putanja = "../../Data/studenti.csv";
+        private const string putanja = "../../../Data/studenti.csv";
 
         private Serializer<Student> serializer;
 

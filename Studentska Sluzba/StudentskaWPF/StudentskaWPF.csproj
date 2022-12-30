@@ -8,7 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DAOModel\Icons\about.png" />
+    <None Remove="DAOModel\Icons\cancel.png" />
+    <None Remove="DAOModel\Icons\editing.png" />
+    <None Remove="DAOModel\Icons\plus.png" />
+    <None Remove="DAOModel\Icons\save.png" />
+    <None Remove="DAOModel\Icons\search.png" />
+    <None Remove="DAOModel\Icons\trash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Studentska Sluzba\Studentska Sluzba.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="DAOModel\Icons\cancel.png" />
+    <Resource Include="DAOModel\Icons\editing.png" />
+    <Resource Include="DAOModel\Icons\plus.png" />
+    <Resource Include="DAOModel\Icons\save.png" />
+    <Resource Include="DAOModel\Icons\search.png" />
+    <Resource Include="DAOModel\Icons\trash.png" />
   </ItemGroup>
 
 </Project>

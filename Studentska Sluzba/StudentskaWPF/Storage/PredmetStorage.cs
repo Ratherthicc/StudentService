@@ -14,7 +14,7 @@ namespace StudentskaWPF.Storage
     class PredmetStorage
     {
 
-        private const string StoragePath = "../../Data/predmeti.csv";
+        private const string StoragePath = "../../../Data/predmeti.csv";
 
         
 
