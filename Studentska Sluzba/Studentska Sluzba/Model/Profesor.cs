@@ -34,11 +34,11 @@ namespace StudentskaSluzba.model
 
         }
 
-        public Profesor(int profesorId, String surname, String name, DateTime dateOfBirth, int adresaStanovanjaId, String contactPhone,
+        public Profesor( String surname, String name, DateTime dateOfBirth, int adresaStanovanjaId, String contactPhone,
                 String email, int AdresaKancelarijeId, String idNumber, String title, int yearsOfTrail
                 )
         {
-            this.profesorId = profesorId;
+           
             this.surname = surname;
             this.name = name;
             this.dateOfBirth = dateOfBirth;
@@ -193,17 +193,19 @@ namespace StudentskaSluzba.model
                                            "\nBroj licne karte: {7}" +
                                            "\nZvanje: {8}" +
                                            "\nGodine staza: {9}",
-                                           surname, name, dateOfBirth,adresaStanovanjaId, contactPhone, email,
+                                           surname, name, dateOfBirth, adresaStanovanjaId, contactPhone, email,
                                            adresaKancelarijeId, idNumber, title, yearsOfTrail);
             string string1 = "\nPredmeti: ";
-            foreach (Predmet p in teachSubjects)
+            return string1;
+        }
+       /*     foreach (Predmet p in teachSubjects)
             {
                 string1 += p.ToString();
             }
 
             return string0 + string1;
 
-        }
+        } */
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)

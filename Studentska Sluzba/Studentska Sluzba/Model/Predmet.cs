@@ -36,10 +36,10 @@ namespace StudentskaSluzba.model
             studentsRemaining = new List<Student>();
         }
 
-        public Predmet(int PredmetId , String id, String name, Semmester semester, int yearOfStudy, int ProfesorId, int espb
+        public Predmet( String id, String name, Semmester semester, int yearOfStudy, int ProfesorId, int espb
            )
         {
-            this.PredmetId = PredmetId;
+           
             this.id = id;
             this.name = name;
             this.semester = semester;

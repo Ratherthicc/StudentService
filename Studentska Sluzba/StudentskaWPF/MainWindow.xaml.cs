@@ -89,13 +89,13 @@ namespace StudentskaWPF
             }
             else if (tabControl.SelectedIndex == 1)
             {
-            //    var otvoriAddProfesor = new AddProfesor(_profesorcontroller);
-            //    otvoriAddProfesor.Show();
+                var otvoriAddProfesor = new addProfesor(profesorcontroller);
+                otvoriAddProfesor.Show();
             }
             else if (tabControl.SelectedIndex == 2)
             {
-               var AddPredmet = new AddPredmet(predmetcontroller);
-               AddPredmet.Show();
+               var AddPredmet1 = new addPredmet(predmetcontroller);
+               AddPredmet1.Show();
             }
         }
 

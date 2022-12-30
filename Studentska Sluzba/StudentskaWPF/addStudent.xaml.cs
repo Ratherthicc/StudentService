@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static StudentskaSluzba.model.Predmet;
 
 namespace StudentskaWPF
 {
@@ -32,5 +33,14 @@ namespace StudentskaWPF
             _studentController = new StudentController();
             student = new Student();
         }
+
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+      
+
     }
 }

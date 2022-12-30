@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Dodavanje predmeta" Height="383" Width="394">
     <Grid Margin="0,0,0,14">
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="95,240,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="215,240,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793"/>
+        <Button x:Name="potvrdi" Content="Potvrdi" HorizontalAlignment="Left" Margin="95,240,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE" Click="potvrdi_Click"/>
+        <Button x:Name="odustani" Content="Odustani" HorizontalAlignment="Left" Margin="215,240,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Click="odustani_Click"/>
         <Label Content="Sifra Predmeta" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top"/>
         <Label Content="Naziv Predmeta" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label Content="Semestar" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>

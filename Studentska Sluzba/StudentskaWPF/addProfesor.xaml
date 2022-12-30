@@ -11,8 +11,8 @@
             <ColumnDefinition Width="76*"/>
             <ColumnDefinition Width="347*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="15,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE" Grid.Column="1"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="154,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Grid.Column="1"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="15,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE" Grid.Column="1" Click="Button_Click"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="154,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Grid.Column="1" Click="Cancel_Click"/>
         <Label Content="Ime" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="30"/>
         <Label Content="Prezime" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="52"/>
         <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="92"/>
@@ -23,15 +23,15 @@
         <Label Content="Broj Licne Karte" HorizontalAlignment="Left" Margin="50,230,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="92"/>
         <Label Content="Zvanje" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="45"/>
         <Label Content="Godine Staza" HorizontalAlignment="Left" Margin="50,290,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="79"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="154,290,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="ime1" HorizontalAlignment="Left" Margin="154,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="prezime1" HorizontalAlignment="Left" Margin="154,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="datum" HorizontalAlignment="Left" Margin="154,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="adresastan" HorizontalAlignment="Left" Margin="154,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="telefon" HorizontalAlignment="Left" Margin="154,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="email1" HorizontalAlignment="Left" Margin="154,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="adresakanc" HorizontalAlignment="Left" Margin="154,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="brojlicne" HorizontalAlignment="Left" Margin="154,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="zvanje1" HorizontalAlignment="Left" Margin="154,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox Name="godina" HorizontalAlignment="Left" Margin="154,290,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
     </Grid>
 </Window>
