@@ -70,12 +70,12 @@ namespace StudentskaSluzba.model
         }
 
         // Constructor:
-        public Student( int studentId, String name,String surname,DateTime dateOfBirth,int adresaId, String phoneNumber, String email,String idNumber,int yearOfEnrollment,
-            int yearOfStudy,Status methodOfFinancing,float avgGrade)
+        public Student( String name,String surname,DateTime dateOfBirth,int adresaId, String phoneNumber, String email,String idNumber,int yearOfEnrollment,
+            int yearOfStudy,Status methodOfFinancing)
           
          
         {
-            this.studentId = studentId;
+           
             this.name = name;
             this.surname = surname;
             this.dateOfBirth = dateOfBirth;
@@ -86,7 +86,7 @@ namespace StudentskaSluzba.model
             this.yearOfEnrollment = yearOfEnrollment;
             this.yearOfStudy = yearOfStudy;
             this.methodOfFinancing = methodOfFinancing;
-            this.avgGrade = avgGrade;
+          
            
             gradesPassedSubjects = new List<Predmet>();
             remainingSubjects = new List<Predmet>();
@@ -117,7 +117,7 @@ namespace StudentskaSluzba.model
                 this.yearOfEnrollment.ToString(),
                 this.yearOfStudy.ToString(),
                  this.methodOfFinancing.ToString(),
-                this.avgGrade.ToString(),
+             
                
               // Napomena2: Ovi atributi klase se ne serijalizuju, potrebno je napraviti tabelu koja 
               // modeluje veze student-ocena i student-predmet ( odnost vise na vise )..
@@ -143,7 +143,7 @@ namespace StudentskaSluzba.model
             this.yearOfEnrollment = int.Parse(values[8]);
             this.yearOfStudy = int.Parse(values[9]);
             this.methodOfFinancing = Enum.Parse<Status>(values[10]);
-            this.avgGrade = float.Parse(values[11]);
+         
                 
         }
 

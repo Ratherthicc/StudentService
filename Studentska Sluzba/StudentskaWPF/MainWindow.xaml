@@ -82,12 +82,11 @@
                   SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
                   IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,84,7" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Indeks" Width="140" Binding="{Binding id_number}"/>
-                            <DataGridTextColumn Header="Ime" Width="110" Binding="{Binding name}"/>
-                            <DataGridTextColumn Header="Prezime" Width="130" Binding="{Binding surname}"/>
-                            <DataGridTextColumn Header="Godina studija" Width="190" Binding="{Binding yearOfEnrollment}"/>
-                            <DataGridTextColumn Header="Status" Width="110" Binding="{Binding methodOfFinancing}"/>
-                            <DataGridTextColumn Header="Prosek" Width="110" Binding="{Binding avgGrade}"/>
+                            <DataGridTextColumn Header="Indeks" Width="140" Binding="{Binding IdNumber}"/>
+                            <DataGridTextColumn Header="Ime" Width="110" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Prezime" Width="130" Binding="{Binding Surname}"/>
+                            <DataGridTextColumn Header="Godina studija" Width="190" Binding="{Binding YearOfEnrollment}"/>
+                            <DataGridTextColumn Header="Status" Width="110" Binding="{Binding MethodOfFinancing}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

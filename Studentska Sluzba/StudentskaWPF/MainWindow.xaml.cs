@@ -84,8 +84,8 @@ namespace StudentskaWPF
         {
             if (tabControl.SelectedIndex == 0)
             {
-              // var otvoriAddStudent = new AddStudent(_studentcontroller);
-                // otvoriAddStudent.Show();
+               var otvoriAddStudent = new addStudent(studentController);
+                 otvoriAddStudent.Show();
             }
             else if (tabControl.SelectedIndex == 1)
             {

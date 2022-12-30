@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="Dodavanje studenta" Height="452" Width="423">
     <Grid Margin="0,0,10,14">
-        <TextBox HorizontalAlignment="Left" Margin="235,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="235,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="96,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793"/>
+        <TextBox Name="ime1" HorizontalAlignment="Left" Margin="235,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="prezime1" HorizontalAlignment="Left" Margin="235,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="datum" HorizontalAlignment="Left" Margin="235,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="adresa" HorizontalAlignment="Left" Margin="235,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="brojtel" HorizontalAlignment="Left" Margin="235,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="email1" HorizontalAlignment="Left" Margin="235,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="brojindeksa" HorizontalAlignment="Left" Margin="235,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="godinaupisa"  HorizontalAlignment="Left" Margin="235,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Left" Margin="96,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE" Click="Potvrda"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Click="odustani"/>
         <Label Content="Ime" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top"/>
         <Label Content="Prezime" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top"/>
         <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top"/>
@@ -27,13 +27,13 @@
         <Label Content="Godina upisa" HorizontalAlignment="Left" Margin="50,230,0,0" VerticalAlignment="Top"/>
         <Label Content="Trenutna godina studija" HorizontalAlignment="Left" Margin="50,260,0,0" VerticalAlignment="Top"/>
         <Label Content="Nacin finansiranja" HorizontalAlignment="Left" Margin="50,290,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="235,260,0,0" VerticalAlignment="Top" Width="120" SelectedValue="1 (prva)">
-            <ComboBoxItem Content="1 (prva)"/>
-            <ComboBoxItem Content="2 (druga)"/>
-            <ComboBoxItem Content="3 (treca)"/>
-            <ComboBoxItem Content="4 (cetvrta)"/>
+        <ComboBox Name="trenutnagodina" HorizontalAlignment="Left" Margin="235,260,0,0" VerticalAlignment="Top" Width="120" SelectedValue="1 (prva)">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="235,290,0,0" VerticalAlignment="Top" Width="120" SelectedValue="Budzet">
+        <ComboBox Name="nacinfins" HorizontalAlignment="Left" Margin="235,290,0,0" VerticalAlignment="Top" Width="120" SelectedValue="Budzet">
             <ComboBoxItem Content="Budzet"/>
             <ComboBoxItem Content="Samofinansiranje"/>
         </ComboBox>

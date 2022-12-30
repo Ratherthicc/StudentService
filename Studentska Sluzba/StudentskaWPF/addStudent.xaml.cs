@@ -26,21 +26,49 @@ namespace StudentskaWPF
         private StudentController _studentController;
 
 
-        public addStudent()
+        public addStudent(StudentController st)
         {
             this.DataContext = this;
             InitializeComponent();
-            _studentController = new StudentController();
+            _studentController = st;
             student = new Student();
         }
 
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void Potvrda(object sender, RoutedEventArgs e)
+        {
+
+
+            String ime = ime1.Text;
+            String prezime = prezime1.Text;
+            String datrdj = datum.Text;
+            DateTime datumrodj = DateTime.Parse(datrdj);
+
+            String adrst = adresa.Text;
+            int adresaid = int.Parse(adrst);
+
+            String brtel = brojtel.Text;
+            String email = email1.Text;
+            String brindx = brojindeksa.Text;
+            String gu = godinaupisa.Text;
+            int godupis = string.IsNullOrEmpty(gu) ? 0 : int.Parse(gu);
+            String nacfn = nacinfins.Text;
+            String tgu = trenutnagodina.Text;
+            String trenutnagod1 = trenutnagodina.Text;
+            int trenutnagod = int.Parse(trenutnagod1);
+
+            String nacin = nacinfins.Text;
+
+
+
+
+            Student s = new Student(ime, prezime, datumrodj, adresaid, brtel, email, brindx, godupis, trenutnagod, 0);
+            _studentController.Create(s);
+
+        }
+        private void odustani(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
-      
-
     }
 }
