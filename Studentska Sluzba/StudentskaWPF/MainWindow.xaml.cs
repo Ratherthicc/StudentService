@@ -318,8 +318,8 @@ namespace StudentskaWPF
             {
                 if (SelectedProfesor != null)
                 {
-                //    var otvoriUpdateProfesor = new UpdateProfesor(_profesorcontroller, SelectedProfesor);
-                 //   otvoriUpdateProfesor.Show();
+                    var otvoriUpdateProfesor = new changeProfesor(SelectedProfesor, profesorcontroller);
+                    otvoriUpdateProfesor.Show();
                 }
                 else
                 {
