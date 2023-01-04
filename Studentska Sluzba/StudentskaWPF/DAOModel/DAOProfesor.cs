@@ -44,7 +44,7 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
-      /*  public void Update(Profesor profesor)
+       public void Update(Profesor profesor)
         {
             int index = profesori.FindIndex(p => p.profesorId == profesor.profesorId);
             if (index != -1)
@@ -55,7 +55,7 @@ namespace StudentskaWPF.DAOModel
             storage.Save(profesori);
             NotifyObservers();
         }
-       */    //nisam siguran dal ce ovo raditi
+           //nisam siguran dal ce ovo raditi
         public List<Profesor> GetAll()
         {
             return profesori;

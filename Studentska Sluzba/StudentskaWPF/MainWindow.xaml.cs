@@ -299,5 +299,47 @@ namespace StudentskaWPF
             UpdateProfesorList();
             UpdatePredmetList();
         }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+            {
+                if (SelectedStudent != null)
+                {
+                    var otvoriUpdateStudent = new changeStudent(studentController, SelectedStudent);
+                    otvoriUpdateStudent.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati studenta kojeg zelite da izmjenite!");
+                }
+            }
+            else if (tabControl.SelectedIndex == 1)
+            {
+                if (SelectedProfesor != null)
+                {
+                //    var otvoriUpdateProfesor = new UpdateProfesor(_profesorcontroller, SelectedProfesor);
+                 //   otvoriUpdateProfesor.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati profesora kojeg zelite da izmjenite!");
+                }
+            }
+            else if (tabControl.SelectedIndex == 2)
+            {
+                if (SelectedPredmet != null)
+                {
+                    var otvoriUpdatePredmet = new changePredmet(predmetcontroller, SelectedPredmet);
+                    otvoriUpdatePredmet.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Morate izabrati predmet koji zelite da izmjenite!");
+                }
+            }
+
+        }
+
     }
 }

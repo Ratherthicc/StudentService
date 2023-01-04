@@ -35,7 +35,7 @@ namespace StudentskaWPF.Controller
 
         public void Update(Predmet predmet)
         {
-          //  predmeti.Update(predmet);
+            predmeti.Update(predmet);
         }
 
         public void Subscribe(IObserver observer)

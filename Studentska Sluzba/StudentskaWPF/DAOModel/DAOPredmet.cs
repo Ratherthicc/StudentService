@@ -44,18 +44,18 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
-        /*  public void Update(Profesor profesor)
+         public void Update(Predmet predmet)
           {
-              int index = profesori.FindIndex(p => p.profesorId == profesor.profesorId);
+              int index = predmeti.FindIndex(p => p.PredmetId == predmet.PredmetId);
               if (index != -1)
               {
-                  profesori[index] = profesor;
+                predmeti[index] = predmet;
               }
 
-              storage.Save(profesori);
+              storage.Save(predmeti);
               NotifyObservers();
           }
-         */    //nisam siguran dal ce ovo raditi
+            //nisam siguran dal ce ovo raditi
         public List<Predmet> GetAll()
         {
             return predmeti;

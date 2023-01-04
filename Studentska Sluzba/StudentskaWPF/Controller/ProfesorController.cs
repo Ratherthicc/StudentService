@@ -36,7 +36,7 @@ namespace StudentskaWPF.Controller
 
         public void Update(Profesor profesor)
         {
-         //   profesori.Update(profesor);
+          profesori.Update(profesor);
         }
 
         public void Subscribe(IObserver observer)

@@ -43,7 +43,7 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
-      /*  public void Update(Student student)
+        public void Update(Student student)
         {
 
             int index = studenti.FindIndex(s => s.studentId == student.studentId);
@@ -57,7 +57,7 @@ namespace StudentskaWPF.DAOModel
 
 
 
-        } */  //nisam siguran hoce li ovo raditi takodje
+        }   //nisam siguran hoce li ovo raditi takodje
 
         public List<Student> GetAll()
         {
