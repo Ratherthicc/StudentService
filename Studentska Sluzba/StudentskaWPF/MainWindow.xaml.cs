@@ -80,6 +80,7 @@ namespace StudentskaWPF
 
         }
 
+
         private void add_click(object sender, RoutedEventArgs e)
         {
             if (tabControl.SelectedIndex == 0)

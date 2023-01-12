@@ -73,7 +73,7 @@ namespace StudentskaSluzba.model
         {
             string[] csvValues =
             {
-                OcjenaNaIspituId.ToString(),
+               
                 studentId.ToString(),
                 predmetId.ToString(),
                 grade.ToString(),
@@ -84,7 +84,7 @@ namespace StudentskaSluzba.model
 
         public void FromCSV(string[] values)
         {
-            OcjenaNaIspituId = int.Parse(values[0]);
+           
             studentId = int.Parse(values[1]);
             predmetId = int.Parse(values[2]);
             grade = int.Parse(values[3]);
