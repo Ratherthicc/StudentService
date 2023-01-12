@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaSluzba.model
 {
-    class Ocena : Serializable
+    public class Ocena : Serializable
     {
         public int OcjenaNaIspituId;
         public Student student;
