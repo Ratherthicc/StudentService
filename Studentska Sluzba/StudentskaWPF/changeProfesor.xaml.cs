@@ -1,7 +1,9 @@
 ﻿using StudentskaSluzba.model;
 using StudentskaWPF.Controller;
+using StudentskaWPF.Observer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -21,11 +23,14 @@ namespace StudentskaWPF
     /// <summary>
     /// Interaction logic for changeProfesor.xaml
     /// </summary>
-    public partial class changeProfesor : Window
+    public partial class changeProfesor : Window, IObserver
     {
 
         private ProfesorController _profesorController;
+        private KatedraController _katedraController;
+        public ObservableCollection<Katedra> katedre1 { get; set; }
         public Profesor profesor { get; set; }
+        public Katedra selectedKatedra { get; set; } 
         public changeProfesor(Profesor p, ProfesorController controller)
         {
             InitializeComponent();
@@ -42,7 +47,12 @@ namespace StudentskaWPF
             brLicneKarte.Text = p.IdNumber.ToString();
             godStaza.Text = p.YearsOfTrail.ToString();
 
+            _katedraController = new KatedraController();
             _profesorController = controller;
+
+            katedre1 = new ObservableCollection<Katedra>(_katedraController.GetAllKatedra());
+            _katedraController.Subscribe(this);
+            _profesorController.Subscribe(this);
 
         }
 
@@ -77,6 +87,25 @@ namespace StudentskaWPF
 
             _profesorController.Update(profesor);
             Close();
+        }
+
+        private void dodelaSefaKatedri_click(object sender, RoutedEventArgs e)
+        {
+
+            if (MessageBox.Show("Da li ste sigurni da zelite da unesete izmenu?", "Upozorenje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                if ((profesor.Title.ToLower() == "redovni profesor" || profesor.Title.ToLower() == "vanredni profesor") && profesor.YearsOfTrail > 4)
+                {
+                    _katedraController.dodelaSefaKatedri(profesor, selectedKatedra);
+                    MessageBox.Show("Uspesna izmena!");
+                }
+                else
+                    MessageBox.Show("Zvanje ili godine staza nisu dobre!");
+            }
+
+        }
+        public void Update()
+        {
         }
     }
 }

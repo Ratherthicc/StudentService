@@ -12,7 +12,7 @@
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="2">
-            <TabItem x:Name="tabInformacije" Header="Informacije" Margin="35,50,-35,-52">
+            <TabItem x:Name="tabInformacije" Header="Informacije">
                 <Grid Margin="0,0,13,14" Height="400">
                     <TextBox x:Name="ime" HorizontalAlignment="Left" Margin="235,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="prezime" HorizontalAlignment="Left" Margin="235,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
@@ -38,8 +38,14 @@
                     <Label Content="Zvanje" HorizontalAlignment="Left" Margin="50,290,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabPredmeti" Header="Predmeti" Margin="35,50,-35,-52" HorizontalAlignment="Right" Width="70">
+            <TabItem x:Name="tabPredmeti" Header="Predmeti"  HorizontalAlignment="Right" Width="70">
                 <Grid Background="#FFE5E5E5" Margin="0,11,0,0"/>
+            </TabItem>
+            <TabItem x:Name="tabKatedre" Header="Katedre"  HorizontalAlignment="Right" Width="70">
+                <Grid Background="#FFE5E5E5" Margin="0,11,0,0">
+                    <ListBox ItemsSource="{Binding katedre1}" SelectedValue="{Binding selectedKatedra}"  DisplayMemberPath="DepartmentName" Margin="26,54,26,107"/>
+                    <Button Click ="dodelaSefaKatedri_click" Content="Potvrdi sefa katedre" HorizontalAlignment="Left" Margin="266,407,0,0" VerticalAlignment="Top" Height="27" Width="126"/>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

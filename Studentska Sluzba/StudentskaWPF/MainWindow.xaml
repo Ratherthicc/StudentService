@@ -23,7 +23,9 @@
                         <Image Source="DAOModel/Icons/save.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Open" Click="Open_Click" InputGestureText="Ctrl+O"></MenuItem>
+                <MenuItem Header="Open" Click="Open_Click" InputGestureText="Ctrl+O">
+                    
+                </MenuItem>
                 <MenuItem Header="Close" Click="CloseMenu_Click" InputGestureText="Ctrl+C">
                     <MenuItem.Icon>
                         <Image Source="DAOModel/Icons/cancel.png" />
@@ -80,7 +82,7 @@
                 <TabItem Header="Studenti" Height="23" VerticalAlignment="Top">
                     <DataGrid Grid.Row="1" x:Name="DataGridStudent" ItemsSource="{Binding listastudenata, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" Margin="31,0,192,0"  >
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,-2,0"  >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Indeks" Width="140" Binding="{Binding IdNumber}"/>
                             <DataGridTextColumn Header="Ime" Width="110" Binding="{Binding Name}"/>
@@ -93,7 +95,7 @@
                 <TabItem Header="Profesori">
                     <DataGrid Grid.Row="1" x:Name="DataGridProfesor"  ItemsSource="{Binding listaprofesora, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedProfesor, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,113,7" >
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="3,0,4,0" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ime" Width="120" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Prezime" Width="140" Binding="{Binding Surname}"/>
@@ -105,13 +107,13 @@
                 <TabItem Header="Predmeti">
                     <DataGrid Grid.Row="1" x:Name="DataGridPredmet" ItemsSource="{Binding listapredmeta, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedPredmet, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" Margin="31,36,163,7">
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="2,0,1,0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Šifra predmeta" Width="90" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Naziv predmeta" Width="300" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Broj ESPB bodova" Width="120" Binding="{Binding Espb}"/>
-                            <DataGridTextColumn Header="Godina" Width="100" Binding="{Binding YearOfStudy}"/>
-                            <DataGridTextColumn Header="Semestar" Width="100" Binding="{Binding Semester}"/>
+                            <DataGridTextColumn Header="Šifra predmeta"  Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Naziv predmeta"  Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Broj ESPB bodova"  Binding="{Binding Espb}"/>
+                            <DataGridTextColumn Header="Godina"  Binding="{Binding YearOfStudy}"/>
+                            <DataGridTextColumn Header="Semestar"  Binding="{Binding Semester}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

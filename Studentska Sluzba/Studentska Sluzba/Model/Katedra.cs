@@ -19,7 +19,7 @@ namespace StudentskaSluzba.model
 
         public Katedra() { 
         lecturers = new List<Profesor>();
-
+  
         }
 
         public Katedra(int IdKatedre,String departmentCode, String departmentName, Profesor chairman)
@@ -30,6 +30,7 @@ namespace StudentskaSluzba.model
             this.chairman = chairman;
             lecturers= new List<Profesor>();
             Idchairman = chairman.profesorId;
+
         }
 
         
@@ -40,6 +41,11 @@ namespace StudentskaSluzba.model
             set { departmentCode = value; }
         }
 
+        public int idKatedre
+        {
+            get { return IdKatedre; }
+            set { IdKatedre = value; }
+        }
         public String DepartmentName
         {
             get { return departmentName; }
