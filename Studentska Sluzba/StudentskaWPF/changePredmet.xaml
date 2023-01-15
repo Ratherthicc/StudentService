@@ -21,7 +21,7 @@
                         <ComboBoxItem Content="3"/>
                         <ComboBoxItem Content="4"/>
                     </ComboBox>
-                    <TextBox x:Name="idprofesora" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
+                    <TextBox x:Name="idprofesora" IsReadOnly="True" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="112"/>
                     <TextBox x:Name="espb" HorizontalAlignment="Left" Margin="203,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
 
                     <Button Content="Potvrdi" Click="potvrdiClick" HorizontalAlignment="Left" Margin="96,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE"/>
@@ -32,6 +32,8 @@
                     <Label Content="Godina Izvodjenja" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top"/>
                     <Label Content="Predmetni profesor" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top"/>
                     <Label Content="ESPB" HorizontalAlignment="Left" Margin="50,140,0,0" VerticalAlignment="Top"/>
+                    <Button Content="+" HorizontalAlignment="Left" Margin="337,110,0,0" VerticalAlignment="Top" Width="18" Height="18" Click="dodajProf_click"/>
+                    <Button Content="-" HorizontalAlignment="Left" Margin="367,110,0,0" VerticalAlignment="Top" Width="18" Height="18" Click="ukloniProf_click"/>
 
 
                 </Grid>

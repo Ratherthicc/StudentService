@@ -25,12 +25,14 @@ namespace StudentskaSluzba.model
         private String title;
         private int yearsOfTrail;
         private List<Predmet> teachSubjects;
+        private String nameAndSurname;
         
 
         public Profesor() {
             teachSubjects = new List<Predmet>();
             Adresa residentialAdress = new Adresa();
             Adresa officeAddress = new Adresa();
+            this.nameAndSurname = this.name + this.surname;
 
         }
 
@@ -52,6 +54,8 @@ namespace StudentskaSluzba.model
            
             this.adresaStanovanjaId = adresaStanovanjaId;
             this.adresaKancelarijeId = AdresaKancelarijeId;
+
+            this.nameAndSurname = this.name + " " + this.surname;
 
         }
 
@@ -117,7 +121,11 @@ namespace StudentskaSluzba.model
             set { title = value; OnPropertyChanged("title"); }
         }
 
-
+        public String NameAndSurname
+        {
+            get { return this.name + " " + this.surname; }
+            set { nameAndSurname = value; OnPropertyChanged("nameAndSurname"); }
+        }
         public int YearsOfTrail
 
         {
@@ -212,9 +220,6 @@ namespace StudentskaSluzba.model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-
-
 
 
 
