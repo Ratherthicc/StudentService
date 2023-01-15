@@ -50,7 +50,7 @@ namespace StudentskaWPF.DAOModel
         {
             o.OcjenaNaIspituId = NextId2();
             nepolozeni.Add(o);
-            storage.Save2(ocjene);
+            storage.Save2(nepolozeni);
             NotifyObservers();
         }
 

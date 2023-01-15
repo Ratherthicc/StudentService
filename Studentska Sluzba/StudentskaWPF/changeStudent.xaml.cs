@@ -202,7 +202,7 @@ namespace StudentskaWPF
                     Ocena ocjena = new Ocena();
                     foreach (Ocena i in ocjenecontroller.GetAllOcjene())
                     {
-                        if (Student.studentId == i.studentId)
+                        if (Student.studentId == i.studentId && selektovan.PredmetId == i.predmetId)
                         {
                             ocjenecontroller.Delete(i);
                             ocjena = i;
@@ -215,7 +215,8 @@ namespace StudentskaWPF
                          
                           ocjenecontroller.CreateNepolozeni(ocjena);
                           nepolozeni.Add(selektovan);
-                          nepolozeni.Remove(selektovan);
+                  
+                          polozeni.Remove(selektovan);
                           this.Update();
                     
                 }
@@ -229,9 +230,40 @@ namespace StudentskaWPF
             noviPredmet.Show();
 
         }
-       
+
+        private void obrisi_button(object sender, RoutedEventArgs e)
+        {
+            if (selektovan1 != null)
+            {
+                MessageBoxResult result = ConfirmPredmetDeletion2();
+                if (result == MessageBoxResult.Yes)
+                {
 
 
+                    foreach (Ocena o in ocjenecontroller.GetAllNepolozeni().ToList())
+                    {
+                        if (o.predmetId == selektovan1.PredmetId && Student.studentId == o.studentId)
+                        {
+                            ocjenecontroller.DeleteNepolozeni(o);
+                           
+                        }
+                    }
+                    nepolozeni.Remove(selektovan1);
+                } 
+
+
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati predmet za brisanje");
+            }
+
+        }
+
+        private void polozi_button(object sender, RoutedEventArgs e)
+        {
+
+        }
 
 
     }

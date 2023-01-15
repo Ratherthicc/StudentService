@@ -75,8 +75,8 @@
                         <ColumnDefinition Width="461*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="button1" Click="dodaj_button" Grid.Column="1" Content="Dodaj" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="71" Height="20"/>
-                    <Button x:Name="button2" Grid.Column="1" Content="Obrisi" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,0.739" Width="63" Height="20"/>
-                    <Button x:Name="button3" Grid.Column="1" Content="Polaganje" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="65" Height="20"/>
+                    <Button x:Name="button2" Click="obrisi_button" Grid.Column="1" Content="Obrisi" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,0.739" Width="63" Height="20"/>
+                    <Button x:Name="button3" Click="polozi_button" Grid.Column="1" Content="Polaganje" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="65" Height="20"/>
 
 
                     <DataGrid x:Name="DataGridPredmet2" ItemsSource="{Binding nepolozeni, UpdateSourceTrigger=PropertyChanged}"

@@ -74,8 +74,8 @@ namespace StudentskaSluzba.model
         {
             string[] csvValues =
             {
-               
-                studentId.ToString(),
+                OcjenaNaIspituId.ToString(),
+            studentId.ToString(),
                 predmetId.ToString(),
                 grade.ToString(),
                 date.ToString( "dd/MM/yyyy"),
@@ -85,8 +85,8 @@ namespace StudentskaSluzba.model
 
         public void FromCSV(string[] values)
         {
-           
-            studentId = int.Parse(values[1]);
+            OcjenaNaIspituId = int.Parse(values[0]);
+             studentId = int.Parse(values[1]);
             predmetId = int.Parse(values[2]);
             grade = int.Parse(values[3]);
             date = DateTime.ParseExact(values[4], "dd/MM/yyyy", null);

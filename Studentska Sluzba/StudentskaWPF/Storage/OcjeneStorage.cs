@@ -21,7 +21,7 @@ namespace StudentskaWPF.Storage
         public OcjeneStorage()
         {
             serializer = new Serializer<Ocena>();
-            serializer2 = new Serializer<Ocena>();
+            
             
     }
 
@@ -32,7 +32,7 @@ namespace StudentskaWPF.Storage
 
         public List<Ocena> Load2()
         {
-            return serializer2.FromCSV(putanja2);
+            return serializer.FromCSV(putanja2);
         }
 
 
@@ -45,7 +45,7 @@ namespace StudentskaWPF.Storage
 
         public void Save2(List<Ocena> ocjene)
         {
-            serializer2.ToCSV(putanja2, ocjene);
+            serializer.ToCSV(putanja2, ocjene);
 
 
         }
