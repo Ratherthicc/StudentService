@@ -186,7 +186,7 @@ namespace StudentskaWPF
 
         }
 
-        private void Update()
+        public void Update()
         {
             studentcontroller.Update(Student);
         }
@@ -210,15 +210,15 @@ namespace StudentskaWPF
                         }
                     }
 
-                          ocjena.grade = 0;
-                          ocjena.date = DateTime.MaxValue;
-                         
-                          ocjenecontroller.CreateNepolozeni(ocjena);
-                          nepolozeni.Add(selektovan);
-                  
-                          polozeni.Remove(selektovan);
-                          this.Update();
-                    
+                    ocjena.grade = 0;
+                    ocjena.date = DateTime.MaxValue;
+
+                    ocjenecontroller.CreateNepolozeni(ocjena);
+                    nepolozeni.Add(selektovan);
+
+                    polozeni.Remove(selektovan);
+                    this.Update();
+
                 }
             }
         }
@@ -226,7 +226,7 @@ namespace StudentskaWPF
 
         private void dodaj_button(object sender, RoutedEventArgs e)
         {
-            var noviPredmet = new dodajPredmet(predmetcontroller,ocjenecontroller,polozeni,nepolozeni,Student);
+            var noviPredmet = new dodajPredmet(predmetcontroller, ocjenecontroller, polozeni, nepolozeni, Student);
             noviPredmet.Show();
 
         }
@@ -245,11 +245,11 @@ namespace StudentskaWPF
                         if (o.predmetId == selektovan1.PredmetId && Student.studentId == o.studentId)
                         {
                             ocjenecontroller.DeleteNepolozeni(o);
-                           
+
                         }
                     }
                     nepolozeni.Remove(selektovan1);
-                } 
+                }
 
 
             }
@@ -262,9 +262,17 @@ namespace StudentskaWPF
 
         private void polozi_button(object sender, RoutedEventArgs e)
         {
+            if (selektovan1 == null)
+            {
+                MessageBox.Show("Morate izabrati predmet za polaganje");
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati predmet za polaganje");
+                var dodavanje_ocjene = new polaganje(selektovan1, nepolozeni, polozeni, ocjenecontroller, this, Student);
+                dodavanje_ocjene.Show();
+            }
 
         }
-
-
     }
 }
