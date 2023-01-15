@@ -36,8 +36,9 @@ namespace StudentskaWPF.DAOModel
             return nepolozeni.Max(s => s.OcjenaNaIspituId) + 1;
         }
 
-        public void Add(Ocena o)
-        {
+        public void Add(Ocena o)                       // SVAKA FUNKCIJA JE RADJENA U DVIJE VARIJANTE, ZA LISTU KOMBINACIJA STUDENT - PREDMET KOJI SU POLOZENI
+                                                        // I ISTE TE KOMBINACIJE ZA PREDMETE KOJI SU NEPOLOZENI
+        {     
             o.OcjenaNaIspituId = NextId();
             ocjene.Add(o);
             storage.Save(ocjene);

@@ -222,6 +222,17 @@ namespace StudentskaWPF
             }
         }
 
+
+        private void dodaj_button(object sender, RoutedEventArgs e)
+        {
+            var noviPredmet = new dodajPredmet(predmetcontroller,ocjenecontroller,polozeni,nepolozeni,Student);
+            noviPredmet.Show();
+
+        }
        
+
+
+
+
     }
 }

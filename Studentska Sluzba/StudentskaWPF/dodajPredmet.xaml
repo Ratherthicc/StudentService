@@ -1,0 +1,26 @@
+﻿<Window x:Class="StudentskaWPF.dodajPredmet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentskaWPF"
+        mc:Ignorable="d"
+        Title="Dodavanje predmeta" Height="500" Width="800">
+    <Grid Margin="0,10,0,6">
+        <DataGrid x:Name="DataGridPredmet" ItemsSource="{Binding moguciPredmetiZaDodati, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding selektovan, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="83,83,57,83" Height="302">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Šifra predmeta" Width="120" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Naziv predmeta" Width="150" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Broj ESPB bodova" Width="150" Binding="{Binding Espb}"/>
+                <DataGridTextColumn Header="Godina" Width="130" Binding="{Binding YearOfStudy}"/>
+                <DataGridTextColumn Header="Semestar" Width="130" Binding="{Binding Semester}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button" Content="Dodaj" Click="dodajClick" HorizontalAlignment="Left" Margin="83,412,0,0" VerticalAlignment="Top" Width="130" Height="29"/>
+        <Button x:Name="button1" Content="Odustani" Click="odustaniClick" HorizontalAlignment="Left" Margin="488,412,0,0" VerticalAlignment="Top" Height="29" Width="97"/>
+
+
+    </Grid>
+</Window>
