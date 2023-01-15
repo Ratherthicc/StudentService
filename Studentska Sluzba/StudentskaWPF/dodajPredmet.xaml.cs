@@ -98,7 +98,7 @@ namespace StudentskaWPF
                 o.date = DateTime.MinValue;
 
 
-                ocjentactrl.Create(o);
+                ocjentactrl.CreateNepolozeni(o);
 
                 this.Close();
             }
