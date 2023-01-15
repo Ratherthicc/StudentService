@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentskaWPF"
         mc:Ignorable="d"
-        Title="Izmena studenta" Height="527" Width="434">
+        Title="Izmena predmeta" Height="527" Width="434">
     <Grid Margin="0,0,10,0">
         <TabControl>
-            <TabItem x:Name="tabInformacije" Header="Informacije" Margin="35,50,-35,-52">
-                <Grid Margin="0,0,13,14" Height="400">
-                    <TextBox x:Name="naziv" HorizontalAlignment="Left" Margin="235,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="ComboSemestar" HorizontalAlignment="Left" Margin="235,47,0,0" VerticalAlignment="Top" Width="120" Height="26" RenderTransformOrigin="0.535,0.562">
+            <TabItem x:Name="tabInformacije" Header="Informacije">
+                <Grid Margin="14,0,-1,14" Height="400">
+                    <TextBox x:Name="naziv" HorizontalAlignment="Left" Margin="203,20,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
+                    <ComboBox x:Name="ComboSemestar" HorizontalAlignment="Left" Margin="203,47,0,0" VerticalAlignment="Top" Width="182" Height="20" RenderTransformOrigin="0.535,0.562">
                         <ComboBoxItem Content="letnji"/>
                         <ComboBoxItem Content="zimski"/>
                     </ComboBox>
-                    <ComboBox x:Name="ComboTrGodIzvodjenja" HorizontalAlignment="Left" Margin="235,76,0,0" VerticalAlignment="Top" Width="120" Height="29" RenderTransformOrigin="0.5,0.5">
+                    <ComboBox x:Name="ComboTrGodIzvodjenja" HorizontalAlignment="Left" Margin="203,76,0,0" VerticalAlignment="Top" Width="182" Height="20" RenderTransformOrigin="0.5,0.5">
                         <ComboBoxItem Content="1"/>
                         <ComboBoxItem Content="2"/>
                         <ComboBoxItem Content="3"/>
                         <ComboBoxItem Content="4"/>
                     </ComboBox>
-                    <TextBox x:Name="idprofesora" HorizontalAlignment="Left" Margin="235,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="espb" HorizontalAlignment="Left" Margin="235,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                   
+                    <TextBox x:Name="idprofesora" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
+                    <TextBox x:Name="espb" HorizontalAlignment="Left" Margin="203,140,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
+
                     <Button Content="Potvrdi" Click="potvrdiClick" HorizontalAlignment="Left" Margin="96,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793" Background="#FF0B8FCE"/>
                     <Button Content="Odustani" Click="odustaniClick" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Height="20" Width="80" RenderTransformOrigin="0.236,-0.793"/>
                     <Label Content="Naziv" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top"/>
@@ -32,8 +32,8 @@
                     <Label Content="Godina Izvodjenja" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top"/>
                     <Label Content="Predmetni profesor" HorizontalAlignment="Left" Margin="50,110,0,0" VerticalAlignment="Top"/>
                     <Label Content="ESPB" HorizontalAlignment="Left" Margin="50,140,0,0" VerticalAlignment="Top"/>
-            
-                  
+
+
                 </Grid>
 
             </TabItem>
