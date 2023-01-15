@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.DAOModel
 {
-    class DAOPredmet: ISubject
+    class DAOPredmet : ISubject
     {
 
         private List<IObserver> observers;
@@ -44,18 +44,18 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
-         public void Update(Predmet predmet)
-          {
-              int index = predmeti.FindIndex(p => p.PredmetId == predmet.PredmetId);
-              if (index != -1)
-              {
+        public void Update(Predmet predmet)
+        {
+            int index = predmeti.FindIndex(p => p.PredmetId == predmet.PredmetId);
+            if (index != -1)
+            {
                 predmeti[index] = predmet;
-              }
+            }
 
-              storage.Save(predmeti);
-              NotifyObservers();
-          }
-            //nisam siguran dal ce ovo raditi
+            storage.Save(predmeti);
+            NotifyObservers();
+        }
+        //nisam siguran dal ce ovo raditi
         public List<Predmet> GetAll()
         {
             return predmeti;
@@ -77,6 +77,26 @@ namespace StudentskaWPF.DAOModel
             {
                 observer.Update();
             }
+        }
+
+        public List<Predmet> getPredmetListByProfId(Profesor profesor)
+        { 
+            List<Predmet> tempPredmeti = new List<Predmet>();
+
+                foreach (Predmet p in GetAll())
+                    {
+                    if (p.ProfesorId == profesor.profesorId)
+                        tempPredmeti.Add(p);
+                    }
+
+            return tempPredmeti;
+        }
+
+        public void deletePredmetByPredmetId(int id)
+        {
+            predmeti.Find(p => p.PredmetId == id).ProfesorId = -1;
+            storage.Save(predmeti);
+            NotifyObservers();
         }
     }
 }

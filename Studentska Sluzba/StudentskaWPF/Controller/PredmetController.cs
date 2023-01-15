@@ -45,15 +45,12 @@ namespace StudentskaWPF.Controller
 
         public List<Predmet> getPredmetByIdProf(Profesor profesor)
         {
-            List<Predmet> tempPredmeti = new List<Predmet>();
+            return predmeti.getPredmetListByProfId(profesor);
+        }
 
-            foreach ( Predmet p in predmeti.GetAll())
-                {
-                if (p.ProfesorId == profesor.profesorId)
-                    tempPredmeti.Add(p);
-                }
-
-            return tempPredmeti;
+        public void deletePredmetByPredmet(Predmet predmet)
+        {
+            predmeti.deletePredmetByPredmetId(predmet.PredmetId) ;
         }
     }
 }

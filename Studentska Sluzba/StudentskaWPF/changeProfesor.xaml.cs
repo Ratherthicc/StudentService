@@ -32,6 +32,7 @@ namespace StudentskaWPF
         public ObservableCollection<Katedra> katedre1 { get; set; }
         public Profesor profesor { get; set; }
         public Katedra selectedKatedra { get; set; } 
+        public Predmet selectedPredmet { get; set; }
 
         public ObservableCollection<Predmet> listaPredmeta { get; set; }
         public changeProfesor(Profesor p, ProfesorController controller)
@@ -113,16 +114,29 @@ namespace StudentskaWPF
         }
         public void Update()
         {
+            listaPredmeta.Clear();
+            foreach(var predmet in _predmetController.getPredmetByIdProf(profesor))
+            {
+                listaPredmeta.Add(predmet);
+            }
         }
 
         private void dodajPredmet_click(object sender, RoutedEventArgs e)
-        { 
-
+        {
         }
 
         private void ukloniPredmet_click(object sender, RoutedEventArgs e)
         {
 
+            if (selectedPredmet == null)
+                MessageBox.Show("Morate izabrati predmet za uklanjanje!");
+            else
+            if (MessageBox.Show("Da li ste sigurni da zelite da uklonite predmet?", "Ukloni predmet", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                _predmetController.deletePredmetByPredmet(selectedPredmet);
+                Update();
+                MessageBox.Show("Uspesno uklonjen predmet!");
+            }
         }
     }
 }
