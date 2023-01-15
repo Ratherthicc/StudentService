@@ -2,6 +2,7 @@
 using StudentskaWPF.Controller;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -24,11 +25,29 @@ namespace StudentskaWPF
     /// </summary>
     public partial class changeStudent : Window, INotifyPropertyChanged
     {
+        public Predmet selektovan { get; set; }
+
+        public Predmet selektovan1 { get; set; }
+
+
+
+
         private StudentController studentcontroller;
+        private OcjeneController ocjenecontroller;
+        private PredmetController predmetcontroller;
+
+        public ObservableCollection<Predmet> predmeti;
+        public ObservableCollection<Predmet> polozeni { get; }
+        public ObservableCollection<Predmet> nepolozeni;
+       
+
         public Student Student { get; set; }
 
         public changeStudent(StudentController controller, Student s)
         {
+            predmetcontroller = new PredmetController();
+            ocjenecontroller = new OcjeneController();
+
             InitializeComponent();
             DataContext = this;
             Student = s;
@@ -42,10 +61,29 @@ namespace StudentskaWPF
             godUpisa.Text = s.yearOfEnrollment.ToString();
             trenutnaGodStudija.Text = s.yearOfStudy.ToString();
             nacinFinansiranja.Text = s.methodOfFinancing.ToString();
-
-
+            nepolozeni = new ObservableCollection<Predmet>();
+            polozeni = new ObservableCollection<Predmet>();
 
             studentcontroller = controller;
+
+            foreach (var ocjena in ocjenecontroller.GetAllOcjene())       // pravljenje liste polozenih predmeta na osnovu ID polja u studentu i predmetu
+            {
+                if (ocjena.studentId == s.studentId)
+                {
+                    foreach (var predmet in predmetcontroller.GetAllPredmet())
+                    {
+                        if (predmet.PredmetId == ocjena.predmetId)
+                        {
+
+                            polozeni.Add(predmet);
+                        }
+                    }
+                }
+            }
+
+
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

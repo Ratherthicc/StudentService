@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StudentskaWPF.DAOModel
 {
-    public class DAOOcjene
+    public class DAOOcjene: ISubject
     {
 
         private List<IObserver> observers;
@@ -24,11 +24,14 @@ namespace StudentskaWPF.DAOModel
             observers = new List<IObserver>();
         }
 
-  
+        public int NextId()
+        {
+            return ocjene.Max(s => s.OcjenaNaIspituId) + 1;
+        }
 
         public void Add(Ocena o)
         {
-          
+            o.OcjenaNaIspituId = NextId();
             ocjene.Add(o);
             storage.Save(ocjene);
             NotifyObservers();

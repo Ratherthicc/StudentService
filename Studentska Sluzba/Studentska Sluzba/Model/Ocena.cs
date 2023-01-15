@@ -23,13 +23,14 @@ namespace StudentskaSluzba.model
         this. subject = new Predmet();
         }
 
-        public Ocena(int OcjenaNaIspituId, int studentId, int predmetId, DateTime date)
+        public Ocena(int OcjenaNaIspituId, int studentId, int predmetId, int grade, DateTime date)
         {
 
             this.OcjenaNaIspituId = OcjenaNaIspituId;
             this.studentId = studentId;
             this.predmetId = predmetId;
             this.date = date;
+            this.grade = grade;
         }
 
         public Student Student
