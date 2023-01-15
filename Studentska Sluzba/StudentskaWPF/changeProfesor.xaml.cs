@@ -35,7 +35,8 @@ namespace StudentskaWPF
         public Predmet selectedPredmet { get; set; }
 
         public ObservableCollection<Predmet> listaPredmeta { get; set; }
-        public changeProfesor(Profesor p, ProfesorController controller)
+        public MainWindow mainWin;
+        public changeProfesor(Profesor p, ProfesorController controller, MainWindow mw)
         {
             InitializeComponent();
             DataContext = this;
@@ -51,6 +52,8 @@ namespace StudentskaWPF
             brLicneKarte.Text = p.IdNumber.ToString();
             godStaza.Text = p.YearsOfTrail.ToString();
 
+            mainWin = mw;
+
             _katedraController = new KatedraController();
             _profesorController = controller;
             _predmetController = new PredmetController();
@@ -61,7 +64,7 @@ namespace StudentskaWPF
             _katedraController.Subscribe(this);
             _profesorController.Subscribe(this);
             _predmetController.Subscribe(this);
-
+            this.mainWin = mainWin;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -123,6 +126,8 @@ namespace StudentskaWPF
 
         private void dodajPredmet_click(object sender, RoutedEventArgs e)
         {
+            changeProfesorPredmet prozorZaDodavanje = new(_predmetController, profesor, listaPredmeta, mainWin);
+            prozorZaDodavanje.Show();
         }
 
         private void ukloniPredmet_click(object sender, RoutedEventArgs e)

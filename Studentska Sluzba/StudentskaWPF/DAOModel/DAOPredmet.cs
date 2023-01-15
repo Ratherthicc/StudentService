@@ -98,5 +98,20 @@ namespace StudentskaWPF.DAOModel
             storage.Save(predmeti);
             NotifyObservers();
         }
+
+        public List<Predmet> getPredmetiNotTeachedByProfessor(Profesor profesor)
+        {
+            List<Predmet> tempPredmeti = new List<Predmet>();
+
+            foreach (Predmet p in GetAll())
+            {
+                if (p.ProfesorId != profesor.profesorId)
+                {
+                    tempPredmeti.Add(p);
+                }
+            }
+
+            return tempPredmeti;
+        }
     }
 }

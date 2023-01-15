@@ -52,5 +52,10 @@ namespace StudentskaWPF.Controller
         {
             predmeti.deletePredmetByPredmetId(predmet.PredmetId) ;
         }
+
+        public List<Predmet> getPredmetiNotTeachedByProfesor(Profesor profesor)
+        {
+            return predmeti.getPredmetiNotTeachedByProfessor(profesor);
+        }
     }
 }

@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentskaWPF"
         mc:Ignorable="d"
-        Title="Dodaj predmet" Height="450" Width="450">
-    <Grid HorizontalAlignment="Left" Width="450" Height="450">
-        <Label Content="Predmeti: " HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.529,-0.705"/>
-        <ListBox  Margin="25,73,25,115"/>
-        <Button Content="Potvrdi" HorizontalAlignment="Left" Background="#FF138AA4" Margin="225,379,0,0" VerticalAlignment="Top" Height="25" Width="80"/>
-        <Button Content="Odustani" HorizontalAlignment="Left" Margin="345,379,0,0" VerticalAlignment="Top" Height="25" Width="80"/>
+        Title="Dodaj predmet" Height="300" Width="300">
+    <Grid HorizontalAlignment="Left" Width="300" Height="300">
+        <Label Content="Predmeti: " HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.529,-0.705" Height="24" Width="59"/>
+        <ListBox  Margin="10,70,20,120" ItemsSource = "{Binding predmetiZaDodelu, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding selectedPredmet,UpdateSourceTrigger=PropertyChanged}"  DisplayMemberPath="Name"/>
+        <Button Content="Potvrdi" HorizontalAlignment="Center" Background="#FF138AA4" Margin="0,203,0,0" VerticalAlignment="Top" Height="23" Width="74" Click="potvrda_click"/>
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="201,203,0,0" VerticalAlignment="Top" Height="23" Width="74" Click="odustani_click"/>
     </Grid>
 </Window>
