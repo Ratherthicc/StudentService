@@ -16,17 +16,24 @@ namespace StudentskaWPF.DAOModel
 
         private OcjeneStorage storage;
         private List<Ocena> ocjene;
+        private List<Ocena> nepolozeni;
 
         public DAOOcjene()
         {
             storage = new OcjeneStorage();
             ocjene = storage.Load();
+            nepolozeni = storage.Load2();
             observers = new List<IObserver>();
         }
 
         public int NextId()
         {
             return ocjene.Max(s => s.OcjenaNaIspituId) + 1;
+        }
+
+        public int NextId2()
+        {
+            return nepolozeni.Max(s => s.OcjenaNaIspituId) + 1;
         }
 
         public void Add(Ocena o)
@@ -37,6 +44,15 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
+
+        public void Add2(Ocena o)
+        {
+            o.OcjenaNaIspituId = NextId2();
+            nepolozeni.Add(o);
+            storage.Save2(ocjene);
+            NotifyObservers();
+        }
+
         public void Remove(Ocena o)
         {
             ocjene.Remove(o);
@@ -44,10 +60,21 @@ namespace StudentskaWPF.DAOModel
             NotifyObservers();
         }
 
-     
-        public List<Ocena> GetAll()
+        public void Remove2(Ocena o)
+        {
+            nepolozeni.Remove(o);
+            storage.Save2(nepolozeni);
+            NotifyObservers();
+        }
+
+        public List<Ocena> GetAllPolozeni()
         {
             return ocjene;
+        }
+
+        public List<Ocena> GetAllNepolozeni()
+        {
+            return nepolozeni;
         }
 
         public void Subscribe(IObserver observer)

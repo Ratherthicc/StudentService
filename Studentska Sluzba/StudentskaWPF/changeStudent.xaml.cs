@@ -38,8 +38,8 @@ namespace StudentskaWPF
 
         public ObservableCollection<Predmet> predmeti;
         public ObservableCollection<Predmet> polozeni { get; }
-        public ObservableCollection<Predmet> nepolozeni;
-       
+        public ObservableCollection<Predmet> nepolozeni { get; }
+
 
         public Student Student { get; set; }
 
@@ -82,6 +82,23 @@ namespace StudentskaWPF
             }
 
 
+            foreach (var ocjena in ocjenecontroller.GetAllNepolozeni())       // pravljenje liste polozenih predmeta na osnovu ID polja u studentu i predmetu
+            {
+                if (ocjena.studentId == s.studentId)
+                {
+                    foreach (var predmet in predmetcontroller.GetAllPredmet())
+                    {
+                        if (predmet.PredmetId == ocjena.predmetId)
+                        {
+
+                            nepolozeni.Add(predmet);
+                        }
+                    }
+                }
+            }
+
+
+
 
 
         }
@@ -97,6 +114,33 @@ namespace StudentskaWPF
             Close();
         }
 
+        private MessageBoxResult ConfirmPredmetDeletion()
+        {
+            string sMessageBoxText = $"Zelite li da ponistite ocjenu?\n{selektovan}";
+            string sCaption = "Porvrda brisanja";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+            MessageBoxResult result = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+            return result;
+        }
+
+        private MessageBoxResult ConfirmPredmetDeletion2()
+        {
+            string sMessageBoxText = $"Zelite li da ponistite predmet\n{selektovan1}";
+            string sCaption = "Porvrda brisanja";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+            MessageBoxResult result = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+            return result;
+        }
+
+
+
+
         private void potvrdiClick(object sender, RoutedEventArgs e)
         {
             Student.name = ime.Text;
@@ -111,7 +155,7 @@ namespace StudentskaWPF
             Student.idNumber = brIndeksa.Text;
 
             String gu = godUpisa.Text;
-           
+
             Student.yearOfEnrollment = int.Parse(gu);
 
 
@@ -135,11 +179,49 @@ namespace StudentskaWPF
             }
 
 
-            
-                studentcontroller.Update(Student);
-                Close();
-          
-               
+
+            studentcontroller.Update(Student);
+            Close();
+
+
+        }
+
+        private void Update()
+        {
+            studentcontroller.Update(Student);
+        }
+
+        private void ponisti(object sender, RoutedEventArgs e)
+        {
+            if (selektovan != null)
+            {
+
+                MessageBoxResult r = ConfirmPredmetDeletion();
+                if (r == MessageBoxResult.Yes)
+                {
+                    Ocena ocjena = new Ocena();
+                    foreach (Ocena i in ocjenecontroller.GetAllOcjene())
+                    {
+                        if (Student.studentId == i.studentId)
+                        {
+                            ocjenecontroller.Delete(i);
+                            ocjena = i;
+                            break;
+                        }
+                    }
+
+                          ocjena.grade = 0;
+                          ocjena.date = DateTime.MaxValue;
+                         
+                          ocjenecontroller.CreateNepolozeni(ocjena);
+                          nepolozeni.Add(selektovan);
+                          nepolozeni.Remove(selektovan);
+                          this.Update();
+                    
+                }
             }
+        }
+
+       
     }
 }

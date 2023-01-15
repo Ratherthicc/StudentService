@@ -20,7 +20,12 @@ namespace StudentskaWPF.Controller
 
         public List<Ocena> GetAllOcjene()
         {
-            return ocjene.GetAll();
+            return ocjene.GetAllPolozeni();
+        }
+
+        public List<Ocena> GetAllNepolozeni()
+        {
+            return ocjene.GetAllNepolozeni();
         }
 
         public void Create(Ocena o)
@@ -28,12 +33,19 @@ namespace StudentskaWPF.Controller
             ocjene.Add(o);
         }
 
+        public void CreateNepolozeni(Ocena o)
+        {
+            ocjene.Add2(o);
+        }
         public void Delete(Ocena o)
         {
             ocjene.Remove(o);
         }
 
-      
+        public void DeleteNepolozeni(Ocena o)
+        {
+            ocjene.Remove2(o);
+        }
 
         public void Subscribe(IObserver observer)
         {

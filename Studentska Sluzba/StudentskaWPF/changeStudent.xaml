@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentskaWPF"
         mc:Ignorable="d"
-        Title="Izmena studenta" Height="527" Width="434">
+        Title="Izmena studenta" Height="527" Width="487">
     <Grid Margin="0,0,10,0">
         <TabControl>
             <TabItem x:Name="tabInformacije" Header="Informacije" Margin="35,50,-35,-52">
@@ -49,11 +49,11 @@
                         <ColumnDefinition Width="84*"/>
                         <ColumnDefinition Width="163*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="button" Content="PONISTI OCJENU" Margin="34,59,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.868,-1.648"/>
+                    <Button x:Name="button" Click="ponisti" Content="PONISTI OCJENU" Margin="34,59,10,0" VerticalAlignment="Top" RenderTransformOrigin="-0.868,-1.648"/>
 
                     <DataGrid x:Name="DataGridPredmet" ItemsSource="{Binding polozeni, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding selektovan, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" Margin="2,84,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="391">
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="2,84,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="409">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Šifra predmeta" Width="87"  Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Naziv predmeta" Width="105"  Binding="{Binding Name}"/>
@@ -71,9 +71,30 @@
             <TabItem x:Name="tabNepolozeni" Header="Nepolozeni" Margin="35,50,-35,-52">
                 <Grid Background="#FFE5E5E5" Margin="0,48,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="19*"/>
-                        <ColumnDefinition Width="153*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="461*"/>
                     </Grid.ColumnDefinitions>
+                    <Button x:Name="button1" Grid.Column="1" Content="Dodaj" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="71" Height="20"/>
+                    <Button x:Name="button2" Grid.Column="1" Content="Obrisi" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.576,0.739" Width="63" Height="20"/>
+                    <Button x:Name="button3" Grid.Column="1" Content="Polaganje" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="65" Height="20"/>
+
+
+                    <DataGrid x:Name="DataGridPredmet2" ItemsSource="{Binding nepolozeni, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding selektovan1, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
+                  IsReadOnly="True" AutoGenerateColumns="False" Margin="2,43,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="459">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Šifra predmeta" Width="90"  Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Naziv predmeta" Width="105"  Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="ESPB bodova" Width="79" Binding="{Binding Espb}"/>
+                            <DataGridTextColumn Header="Godina" Width="80" Binding="{Binding YearOfStudy}"/>
+                            <DataGridTextColumn Header="Semestar" Width="100" Binding="{Binding Semester}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+
+
+
                 </Grid>
             </TabItem>
         </TabControl>
