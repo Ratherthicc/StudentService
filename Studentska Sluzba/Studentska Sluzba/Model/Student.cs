@@ -136,7 +136,7 @@ namespace StudentskaSluzba.model
             this.idNumber = values[1];
             this.name = values[2];
             this.surname = values[3];
-            this.dateOfBirth = DateTime.ParseExact(values[4], "dd-MM-yyyy", null);
+            this.dateOfBirth = DateTime.ParseExact(values[4], "dd/MM/yyyy", null);
             this.adresaId= Convert.ToInt32(values[5]);
             this.phoneNumber = values[6];
             this.email = values[7];

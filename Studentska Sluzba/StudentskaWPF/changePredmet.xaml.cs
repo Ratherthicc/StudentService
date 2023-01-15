@@ -26,16 +26,21 @@ namespace StudentskaWPF
     {
         private PredmetController predmetctrl;
         public Predmet pr;
+        public ProfesorController _profesorController;
+        public Profesor prof;
         public changePredmet(PredmetController controller, Predmet p)
         {
             InitializeComponent();
             DataContext = this;
             pr = p;
 
+            _profesorController = new ProfesorController();
+            prof = _profesorController.GetAllProfesor().Find(prof => prof.profesorId == p.ProfesorId);
+
             naziv.Text = p.Name;
             ComboSemestar.Text = p.Semester.ToString();
             ComboTrGodIzvodjenja.Text = p.YearOfStudy.ToString();
-            idprofesora.Text = p.ProfesorId.ToString();
+            idprofesora.Text = prof == null ? "" : prof.Name + " " + prof.Surname;
             espb.Text = p.Espb.ToString();
 
             predmetctrl = controller;
@@ -61,7 +66,8 @@ namespace StudentskaWPF
             int godinaIzvodjenja = int.Parse(godIz);
             pr.YearOfStudy = godinaIzvodjenja;
 
-            pr.ProfesorId = int.Parse(idprofesora.Text);
+            pr.ProfesorId = _profesorController.GetAllProfesor().Find(prof => (prof.NameAndSurname == idprofesora.Text)) != null ?
+                            _profesorController.GetAllProfesor().Find(prof => (prof.NameAndSurname == idprofesora.Text)).profesorId : -1;
 
             String bres = espb.Text;
             int brojEspb = string.IsNullOrEmpty(bres) ? -1 : int.Parse(bres);
@@ -86,6 +92,29 @@ namespace StudentskaWPF
             predmetctrl.Update(pr);
             Close();
 
+        }
+
+        private void dodajProf_click(object sender, RoutedEventArgs e)
+        {
+            if (idprofesora.Text.ToString() == "")
+            {
+                chooseProfesor prozorZaDodavanjeProfesora = new chooseProfesor(predmetctrl, pr, this);
+                prozorZaDodavanjeProfesora.Show();
+            }
+        }
+
+        private void ukloniProf_click(object sender, RoutedEventArgs e)
+        {
+            if (idprofesora.Text.ToString() != "")
+            {
+                if (MessageBox.Show("Da li ste sigurni?", "Ukloni profesora", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    //pr.ProfesorId = -1;
+                    //predmetctrl.Update(pr);
+
+                    idprofesora.Text = "";
+                }
+            }
         }
     }
 }
