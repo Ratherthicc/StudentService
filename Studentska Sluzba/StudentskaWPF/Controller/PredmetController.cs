@@ -42,5 +42,18 @@ namespace StudentskaWPF.Controller
         {
             predmeti.Subscribe(observer);
         }
+
+        public List<Predmet> getPredmetByIdProf(Profesor profesor)
+        {
+            List<Predmet> tempPredmeti = new List<Predmet>();
+
+            foreach ( Predmet p in predmeti.GetAll())
+                {
+                if (p.ProfesorId == profesor.profesorId)
+                    tempPredmeti.Add(p);
+                }
+
+            return tempPredmeti;
+        }
     }
 }

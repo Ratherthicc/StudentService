@@ -39,7 +39,19 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabPredmeti" Header="Predmeti"  HorizontalAlignment="Right" Width="70">
-                <Grid Background="#FFE5E5E5" Margin="0,11,0,0"/>
+                <Grid Background="#FFE5E5E5" Margin="0,11,0,0">
+                    <Button Content="Dodaj predmet" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Background="#FF138AA4" Click="dodajPredmet_click"/>
+                    <Button Content="Ukloni predmet" HorizontalAlignment="Left" Margin="135,10,0,0" VerticalAlignment="Top" Width="100" Background="#FF138AA4" Click="ukloniPredmet_click"/>
+                    <DataGrid Margin="10,41,10,70" ItemsSource="{Binding listaPredmeta}" AutoGenerateColumns="false">   
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Šifra predmeta"  Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Naziv predmeta" Width="150" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Broj ESPB bodova" Width="150" Binding="{Binding Espb}"/>
+                            <DataGridTextColumn Header="Godina" Width="90" Binding="{Binding YearOfStudy}"/>
+                            <DataGridTextColumn Header="Semestar" Width="90" Binding="{Binding Semester}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem x:Name="tabKatedre" Header="Katedre"  HorizontalAlignment="Right" Width="70">
                 <Grid Background="#FFE5E5E5" Margin="0,11,0,0">

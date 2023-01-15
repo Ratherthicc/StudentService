@@ -28,9 +28,12 @@ namespace StudentskaWPF
 
         private ProfesorController _profesorController;
         private KatedraController _katedraController;
+        private PredmetController _predmetController;
         public ObservableCollection<Katedra> katedre1 { get; set; }
         public Profesor profesor { get; set; }
         public Katedra selectedKatedra { get; set; } 
+
+        public ObservableCollection<Predmet> listaPredmeta { get; set; }
         public changeProfesor(Profesor p, ProfesorController controller)
         {
             InitializeComponent();
@@ -49,10 +52,14 @@ namespace StudentskaWPF
 
             _katedraController = new KatedraController();
             _profesorController = controller;
+            _predmetController = new PredmetController();
 
             katedre1 = new ObservableCollection<Katedra>(_katedraController.GetAllKatedra());
+            listaPredmeta = new ObservableCollection<Predmet>(_predmetController.getPredmetByIdProf(profesor));
+
             _katedraController.Subscribe(this);
             _profesorController.Subscribe(this);
+            _predmetController.Subscribe(this);
 
         }
 
@@ -106,6 +113,16 @@ namespace StudentskaWPF
         }
         public void Update()
         {
+        }
+
+        private void dodajPredmet_click(object sender, RoutedEventArgs e)
+        { 
+
+        }
+
+        private void ukloniPredmet_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -146,7 +146,7 @@ namespace StudentskaSluzba.model
             this.name = values[2];
             this.semester = values[3] == "SUMMER" ? Semmester.SUMMER : Semmester.WINTER;
             this.yearOfStudy =int.Parse(values[4]);
-            ProfesorId.ToString(values[5]);
+            ProfesorId = int.Parse(values[5]);
             this.espb = (byte)int.Parse(values[6]);
         }
 
